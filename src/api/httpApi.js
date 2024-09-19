@@ -12,20 +12,48 @@ export const loginApi = (user_name, user_password) => {
 };
 
 /**
- * 注册
+ * 手机注册
  * @param {string} user_name
  * @param {string} user_password
  * @returns
  */
-export const registerApi = (user_name, user_password, user_phone, verification_code) => {
+export const registerPhoneApi = (user_name, user_password, user_phone, verification_code) => {
   return post("/user/register", { user_password, user_name, user_phone, verification_code });
 };
 
-export const sendCodeApi = (user_phone) => {
+/**
+ * 邮箱注册
+ * @param {string} user_name
+ * @param {string} user_password
+ * @returns
+ */
+export const registerEmailApi = (user_name, user_password, user_email) => {
+  return post("/user/register", {
+    user_name,
+    user_password,
+    user_email,
+  });
+};
+
+/**
+ * 发送手机验证码
+ * @param {string} user_phone
+ * @returns
+ */
+export const sendPhoneCodeApi = (user_phone) => {
   return post("/user/send_sms", {
     user_phone,
     user_status: 0,
   });
+};
+
+/**
+ * 发送邮箱验证码
+ * @param {string} user_email
+ * @returns
+ */
+export const sendEmailCodeApi = (user_email) => {
+  return post("/user/send_email", { user_email });
 };
 
 /**
@@ -288,3 +316,28 @@ export const usageSituationApi = () => post("/user/balance_detail", { user_id: g
  * @returns
  */
 export const getBalanceApi = () => post("/user/balance", { user_id: getToken() });
+
+/**
+ * 获取用户信息
+ * @returns
+ */
+export const getUserInfoApi = () => post("/user/user_detail", { user_id: getToken() });
+
+/**
+ * 更新用户信息
+ * @param {string} user_nickname
+ * @param {string} user_desc
+ * @returns
+ */
+export const updateUserInfoApi = (user_nickname, user_desc) =>
+  post("/user/change_user_info", {
+    user_nickname,
+    user_desc,
+  });
+
+/**
+ * 上传文件更新用户头像
+ * @param {FormData} formData
+ * @returns
+ */
+export const updateUserAvatarApi = (formData) => post("/user/send_avatar", formData);

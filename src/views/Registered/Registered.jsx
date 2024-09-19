@@ -3,37 +3,62 @@ import logo from "@/image/logo.png";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import loginImg from "@/image/login.png";
-import { App, Button, Divider, Input, Space } from "antd";
-import { registerApi, sendCodeApi } from "@/api/httpApi";
+import { App, Button, Input, Space, Tabs } from "antd";
+import {
+  registerEmailApi,
+  registerPhoneApi,
+  sendPhoneCodeApi,
+  sendEmailCodeApi,
+} from "@/api/httpApi";
 import { Jump } from "@/utils/tools";
 
+// 注册组件
 function Registered() {
   const history = useHistory();
   const { message, notification } = App.useApp();
 
+  // 创建输入框的引用
   const username = useRef(null);
   const password = useRef(null);
-  const phone = useRef(null)
-  const verificationCode = useRef(null)
+  const phone = useRef(null);
+  const verificationCode = useRef(null);
+  const email = useRef(null);
+  const emailVerificationCode = useRef(null);
 
-  const [isSendCode, setIsSendCode] = useState(false)
-
+  // 状态管理
+  const [activeTab, setActiveTab] = useState("1");
+  const [isSendCode, setIsSendCode] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [codeLoading, setCodeLoading] = useState(false);
 
-  const [codeLoading, setCodeLoading] = useState(false)
-
-  // 登录
-  const login = async () => {
+  // 注册函数
+  const register = async () => {
     const usernameValue = username.current.input.value;
     const passwordValue = password.current.input.value;
-    const phoneValue = phone.current.input.value
-    const codeValue = verificationCode.current.input.value
+    const codeValue =
+      activeTab === "1"
+        ? verificationCode.current.input.value
+        : emailVerificationCode.current.input.value;
 
-    if (!usernameValue || !passwordValue || !codeValue || !phoneValue) return message.warning('请您输入完整的信息');
+    // 验证输入
+    if (!usernameValue || !passwordValue || !codeValue)
+      return message.warning("请您输入完整的信息");
 
     setLoading(true);
-    const res = await registerApi(usernameValue, passwordValue, phoneValue, codeValue);
+    let res;
 
+    // 根据不同的注册方式调用不同的API
+    if (activeTab === "1") {
+      const phoneValue = phone.current.input.value;
+      if (!phoneValue) return message.warning("请输入手机号");
+      res = await registerPhoneApi(usernameValue, passwordValue, phoneValue, codeValue);
+    } else {
+      const emailValue = email.current.input.value;
+      if (!emailValue) return message.warning("请输入邮箱");
+      res = await registerEmailApi(usernameValue, passwordValue, emailValue, codeValue);
+    }
+
+    // 处理注册结果
     setTimeout(() => {
       if (res.code !== 200) {
         setLoading(false);
@@ -42,29 +67,114 @@ function Registered() {
 
       setLoading(false);
       notification.success({
-        message: t('Registered.Registered.903390-1'),
-        description: t('Registered.Registered.903390-2'),
+        message: t("Registered.Registered.903390-1"),
+        description: t("Registered.Registered.903390-2"),
       });
       history.push("/login");
     }, 1000);
   };
 
+  // 跳转到登录页面
   const toLogin = (e) => {
     e.preventDefault();
     Jump("/login", history);
   };
 
-  const sendCode = async () => {
-    const phoneValue = phone.current.input.value
-    if (!phoneValue) return message.warning('请输入手机号！')
-    setCodeLoading(true)
-    const res = await sendCodeApi(phoneValue)
-    setCodeLoading(false)
-    if (res.code !== 200) return message.error(res.msg)
-    setIsSendCode(true)
-    message.success('验证码已发送至您的手机，请注意查收！')
-  }
+  // 发送手机验证码
+  const sendPhoneCode = async () => {
+    const phoneValue = phone.current.input.value;
+    if (!phoneValue) return message.warning("请输入手机号！");
+    setCodeLoading(true);
+    const res = await sendPhoneCodeApi(phoneValue);
+    setCodeLoading(false);
+    if (res.code !== 200) return message.error(res.msg);
+    setIsSendCode(true);
+    message.success("验证码已发送至您的手机，请注意查收！");
+  };
 
+  // 发送邮箱验证码
+  const sendEmailCode = async () => {
+    const emailValue = email.current.input.value;
+    if (!emailValue) return message.warning("请输入邮箱！");
+    setCodeLoading(true);
+    const res = await sendEmailCodeApi(emailValue);
+    setCodeLoading(false);
+    if (res.code !== 200) return message.error(res.msg);
+    setIsSendCode(true);
+    message.success("验证码已发送至您的邮箱，请注意查收！");
+  };
+
+  // 切换注册方式
+  const onChange = (key) => {
+    setActiveTab(key);
+    setIsSendCode(false);
+  };
+
+  // 定义注册表单项
+  const items = [
+    {
+      key: "1",
+      label: "手机号注册",
+      children: (
+        <Space direction="vertical" size={12} style={{ width: "100%" }}>
+          <Input placeholder={"请输入用户名"} size="large" ref={username} />
+          <Input
+            placeholder={t("Registered.Registered.903390-9")}
+            type="password"
+            size="large"
+            ref={password}
+            onKeyUp={({ keyCode }) => (keyCode === 13 ? register() : undefined)}
+          />
+          <Input placeholder={"请输入手机号"} size="large" ref={phone} />
+          <CodeCom>
+            <Input placeholder={"请输入验证码"} size="large" ref={verificationCode} />
+            <Button
+              size="large"
+              type="primary"
+              disabled={isSendCode}
+              onClick={sendPhoneCode}
+              loading={codeLoading}
+              style={{ margin: 0, height: 50, width: "35%" }}
+            >
+              {!isSendCode ? "获取验证码" : "已发送"}
+            </Button>
+          </CodeCom>
+        </Space>
+      ),
+    },
+    {
+      key: "2",
+      label: "邮箱注册",
+      children: (
+        <Space direction="vertical" size={12} style={{ width: "100%" }}>
+          <Input placeholder={"请输入用户名"} size="large" ref={username} />
+          <Input
+            placeholder={t("Registered.Registered.903390-9")}
+            type="password"
+            size="large"
+            ref={password}
+            onKeyUp={({ keyCode }) => (keyCode === 13 ? register() : undefined)}
+          />
+          <Input placeholder={"请输入邮箱"} size="large" ref={email} />
+          <CodeCom>
+            <Input placeholder={"请输入验证码"} size="large" ref={emailVerificationCode} />
+            <Button
+              size="large"
+              type="primary"
+              disabled={isSendCode}
+              onClick={sendEmailCode}
+              loading={codeLoading}
+              style={{ margin: 0, height: 50, width: "35%" }}
+            >
+              {!isSendCode ? "获取验证码" : "已发送"}
+            </Button>
+          </CodeCom>
+        </Space>
+      ),
+    },
+  ];
+
+  // 渲染组件
   return (
     <MainBox>
       <BackGround>
@@ -79,51 +189,38 @@ function Registered() {
         <LoginBox>
           <h1>
             <img src={logo} alt="" />
-            {t('Registered.Registered.903390-3')}
+            {t("Registered.Registered.903390-3")}
           </h1>
           <h2>
-            {t('Registered.Registered.903390-4')}{" "}
+            {t("Registered.Registered.903390-4")}{" "}
             <a href="/#" onClick={toLogin}>
-              {t('Registered.Registered.903390-5')}
+              {t("Registered.Registered.903390-5")}
             </a>
           </h2>
           {/* <h2>{t('Registered.Registered.903390-6')}</h2> */}
           {/* <Divider plain>{t('Registered.Registered.903390-7')}</Divider> */}
-          <Input placeholder={'请输入手机号'} size="large" ref={phone} />
-          <CodeCom >
-            <Input placeholder={'请输入验证码'} size="large" ref={verificationCode} />
-            <Button
-              size="large"
-              type="primary"
-              disabled={isSendCode}
-              onClick={sendCode}
-              loading={codeLoading}
-              style={{ margin: 0, height: 50, width: '35%' }} >
-              {!isSendCode ? '获取验证码' : '已发送'}
-            </Button>
-          </CodeCom>
 
-          <Input placeholder={'请输入用户名'} size="large" ref={username} />
-          <Input
-            placeholder={t('Registered.Registered.903390-9')}
-            type="password"
-            size="large"
-            ref={password}
-            onKeyUp={({ keyCode }) => (keyCode === 13 ? login() : undefined)}
+          <Tabs
+            defaultActiveKey="1"
+            items={items}
+            onChange={onChange}
+            style={{ width: "100%" }}
           />
+
           <Button
             size="large"
             type="primary"
             loading={loading}
             style={{ height: "50px", fontSize: "20px" }}
-            onClick={login}
+            onClick={register}
           >
-            {t('Registered.Registered.903390-10')}
+            {t("Registered.Registered.903390-10")}
           </Button>
           <span>
-            {t('Registered.Registered.7725622-0')}{t('Registered.Registered.903390-9')}？{" "}
+            {t("Registered.Registered.7725622-0")}
+            {t("Registered.Registered.903390-9")}？{" "}
             <a href="/#" onClick={(e) => e.preventDefault()}>
-              {t('Registered.Registered.903390-12')}
+              {t("Registered.Registered.903390-12")}
             </a>
           </span>
         </LoginBox>
@@ -132,6 +229,7 @@ function Registered() {
   );
 }
 
+// 样式组件定义
 const MainBox = styled.div`
   height: 100vh;
   display: flex;
@@ -149,9 +247,7 @@ const CodeCom = styled.div`
   align-items: center;
   width: 100%;
   gap: 12px;
-`
-
-
+`;
 
 const BackGround = styled.div`
   width: 60%;
@@ -181,7 +277,8 @@ const BackGround = styled.div`
       margin-top: 16px;
       font-size: 20px;
       letter-spacing: 2px;
-      margin-left: 8px; font-style: italic;
+      margin-left: 8px;
+      font-style: italic;
     }
   }
 `;
@@ -202,7 +299,8 @@ const LoginBox = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 20px; font-style: italic;
+  gap: 20px;
+  font-style: italic;
   h1 {
     font-size: 60px;
     letter-spacing: 4px;

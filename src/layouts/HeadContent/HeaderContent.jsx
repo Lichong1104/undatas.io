@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { Jump } from "@/utils/tools";
 import { logoutApi } from "@/api/httpApi";
 import { persistor } from "@/redux/store";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import logo from "@/image/logo.png";
 import logoFont from "@/image/logo-font.png";
 import { themeColor } from "@/theme/color";
@@ -16,6 +16,7 @@ const { Header } = Layout;
 function HeaderContent() {
   const history = useHistory();
   const dispatch = useDispatch();
+  const userAvatar = useSelector((state) => state.userAvatarReducer.avatar);
 
   // 退出
   const logout = async () => {
@@ -40,7 +41,7 @@ function HeaderContent() {
       {
         key: "3",
         danger: true,
-        label: <span>{t('HeadContent.HeaderContent.7725626-0')}</span>,
+        label: <span>{t("HeadContent.HeaderContent.7725626-0")}</span>,
         onClick: logout,
       },
     ],
@@ -53,7 +54,9 @@ function HeaderContent() {
           <img style={{ height: "28px" }} src={logo} alt="" />
           <img style={{ height: "28px" }} src={logoFont} alt="" />
           <div>
-            <span onClick={() => history.push("/project")}>{t(t('HeadContent.HeaderContent.7725626-1'))}</span>
+            <span onClick={() => history.push("/project")}>
+              {t(t("HeadContent.HeaderContent.7725626-1"))}
+            </span>
           </div>
           {/* <div>
             <span onClick={() => history.push("/project")}>Universe</span>
@@ -63,10 +66,7 @@ function HeaderContent() {
           <LocaleButton />
           <Dropdown menu={userInfoList} placement="bottom">
             <div className="userInfo">
-              <img
-                src="https://gd-hbimg.huaban.com/7968f776596196a8061e9ee0ee51c0606d785fc42400b-9aWWPH_fw236"
-                alt=""
-              />
+              <img src={userAvatar} alt="" />
             </div>
           </Dropdown>
         </Right>

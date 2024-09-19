@@ -19,8 +19,8 @@ function SideBar() {
   const workSideWhite = [
     "/project",
     "/user/usage",
-    "/user/api-keys",
     "/user-info/user-settings",
+    "/user-info/usage",
   ];
 
   const sideBarList = workSideWhite.includes(location.pathname)

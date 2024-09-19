@@ -7,7 +7,7 @@ import { uploadProgress } from "./reducer/uploadProgress.js";
 import { currentWork } from "./reducer/currentWork.js";
 import { currentProject } from "./reducer/currentProject.js";
 import { currentFile } from "./reducer/currentFile.js";
-
+import { userAvatarReducer } from "./reducer/userAvatar.js";
 // redux持久化
 const persistConfig = {
   key: "root",
@@ -20,6 +20,7 @@ const rootReducer = combineReducers({
   currentWork,
   currentProject,
   currentFile,
+  userAvatarReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

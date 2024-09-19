@@ -1,22 +1,27 @@
-import { ConfigProvider, Menu } from 'antd';
-import React, { useLayoutEffect, useRef, useState } from 'react';
-import styled from 'styled-components';
-import BaseView from './BaseView/BaseView';
-import BindingView from './BindingView/BindingView';
-import SecurityView from './SecurityView/SecurityView';
-import Info from './Info/Info';
-
+import { ConfigProvider, Menu } from "antd";
+import React, { useLayoutEffect, useRef, useState, useEffect } from "react";
+import styled from "styled-components";
+import BaseView from "./BaseView/BaseView";
+import BindingView from "./BindingView/BindingView";
+import SecurityView from "./SecurityView/SecurityView";
+import Info from "./Info/Info";
+import { getUserInfoApi } from "@/api/httpApi";
+import { App } from "antd";
 
 const UserInfo = () => {
+  const { message } = App.useApp();
+  const [currentUser, setCurrentUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
   const menuMap = {
-    base: '基本设置',
-    security: '安全设置',
-    binding: '账号绑定',
+    base: "基本设置",
+    security: "安全设置",
+    binding: "账号绑定",
   };
 
   const [initConfig, setInitConfig] = useState({
-    mode: 'inline',
-    selectKey: 'base',
+    mode: "inline",
+    selectKey: "base",
   });
 
   const dom = useRef(null);
@@ -26,13 +31,13 @@ const UserInfo = () => {
       if (!dom.current) {
         return;
       }
-      let mode = 'inline';
+      let mode = "inline";
       const { offsetWidth } = dom.current;
       if (dom.current.offsetWidth < 641 && offsetWidth > 400) {
-        mode = 'horizontal';
+        mode = "horizontal";
       }
       if (window.innerWidth < 768 && offsetWidth > 400) {
-        mode = 'horizontal';
+        mode = "horizontal";
       }
       setInitConfig({
         ...initConfig,
@@ -43,26 +48,51 @@ const UserInfo = () => {
 
   useLayoutEffect(() => {
     if (dom.current) {
-      window.addEventListener('resize', resize);
+      window.addEventListener("resize", resize);
       resize();
     }
     return () => {
-      window.removeEventListener('resize', resize);
+      window.removeEventListener("resize", resize);
     };
   }, [dom.current]);
+
+  // 获取用户信息
+  const fetchUserInfo = async () => {
+    try {
+      const res = await getUserInfoApi();
+      if (res.code !== 200) {
+        message.error(res.message);
+        return;
+      }
+      setCurrentUser(res.data[0]);
+    } catch (error) {
+      console.error("获取用户信息失败:", error);
+      message.error("获取用户信息失败");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchUserInfo();
+  }, []);
 
   const getMenu = () => {
     return Object.keys(menuMap).map((item) => ({ key: item, label: menuMap[item] }));
   };
 
+  const onUpdate = () => {
+    fetchUserInfo();
+  };
+
   const renderChildren = () => {
     const { selectKey } = initConfig;
     switch (selectKey) {
-      case 'base':
-        return <BaseView />;
-      case 'security':
+      case "base":
+        return <BaseView currentUser={currentUser} loading={loading} onUpdate={onUpdate} />;
+      case "security":
         return <SecurityView />;
-      case 'binding':
+      case "binding":
         return <BindingView />;
       default:
         return null;
@@ -73,15 +103,15 @@ const UserInfo = () => {
     <Container ref={dom}>
       <div className="leftMenu">
         <div>
-          <Info />
+          <Info currentUser={currentUser} loading={loading} />
         </div>
-        <ConfigProvider theme={{ components: { Menu: { itemBorderRadius: 4, } } }}>
+        <ConfigProvider theme={{ components: { Menu: { itemBorderRadius: 4 } } }}>
           <Menu
             mode={initConfig.mode}
             style={{
-              height: '100%',
+              height: "100%",
               borderTopLeftRadius: 8,
-              borderBottomLeftRadius: 8
+              borderBottomLeftRadius: 8,
             }}
             selectedKeys={[initConfig.selectKey]}
             onClick={({ key }) => {
@@ -93,9 +123,8 @@ const UserInfo = () => {
             items={getMenu()}
           />
         </ConfigProvider>
-
       </div>
-      <div className="right custom-scroll" >
+      <div className="right custom-scroll">
         <div className="title">{menuMap[initConfig.selectKey]}</div>
         {renderChildren()}
       </div>
@@ -118,12 +147,11 @@ const Container = styled.div`
   }
   .right {
     flex: 1;
-    padding: 24px; 
+    padding: 24px;
     /* border-radius: 8px; */
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
     background: #fff;
-   
   }
   .title {
     font-size: 24px;

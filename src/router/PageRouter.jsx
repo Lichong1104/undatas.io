@@ -6,7 +6,7 @@ import PageLoading from "@/components/PageLoading/PageLoading";
 const Project = lazy(() => import("../views/pages/Project/Project"));
 const Usage = lazy(() => import("../views/pages/Usage/Usage"));
 const APIKeys = lazy(() => import("../views/pages/APIKeys/APIKeys"));
-const UserSettings = lazy(() => import('@/views/pages/UserInfo/UserSettings/UserSettings'))
+const UserSettings = lazy(() => import("@/views/pages/UserInfo/UserSettings/UserSettings"));
 const CreateProject = lazy(() => import("../views/pages/CreateProject/CreateProject"));
 const WorkSettings = lazy(() => import("../views/pages/WorkSettings/WorkSettings"));
 
@@ -20,9 +20,9 @@ function PageRouter() {
     <Suspense fallback={<PageLoading height="100%" />}>
       <Switch>
         <Route path="/project" component={Project} />
-        <Route path="/user/usage" component={Usage} />
+        <Route path="/user-info/usage" component={Usage} />
         <Route path="/user/api-keys" component={APIKeys} />
-        <Route path='/user-info/user-settings' component={UserSettings} />
+        <Route path="/user-info/user-settings" component={UserSettings} />
         <Route path="/create-project" component={CreateProject} />
         <Route path="/work-settings" component={WorkSettings} />
         <Route path="/dataset" component={Dataset} />

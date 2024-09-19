@@ -5,7 +5,13 @@ import UploadFloat from "@/components/UploadFloat/UploadFloat";
 
 function BodyContent() {
   const location = useLocation();
-  const whiteList = ["/project", "/create-project", "/work-settings", '/user/usage', '/user/api-keys',];
+  const whiteList = [
+    "/project",
+    "/create-project",
+    "/work-settings",
+    "/user-info/usage",
+    "/user/api-keys",
+  ];
 
   return (
     <div

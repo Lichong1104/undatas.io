@@ -34,6 +34,7 @@ function Login() {
       if (res.code !== 200) return message.error(res.msg);
 
       setToken(res.data[0].user_id);
+      sessionStorage.setItem("userAvatar", res.data[0].user_avatar);
       sessionStorage.setItem("username", usernameValue);
       notification.success({
         message: t("Login.Login.9034114-1"),

@@ -1,8 +1,8 @@
 import { getToken } from "@/utils/handleToken";
 import axios from "axios";
 
-export const serverUrl = "http://116.204.67.82:8087";
-// export const serverUrl = "http://192.168.8.21:8087";
+// export const serverUrl = "http://116.204.67.82:8087";
+export const serverUrl = "http://192.168.8.21:8087";
 
 const instance = axios.create({
   // baseURL: "/api", // 请求的基础地址
