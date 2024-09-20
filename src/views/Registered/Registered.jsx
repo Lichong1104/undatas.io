@@ -23,7 +23,6 @@ function Registered() {
   const phone = useRef(null);
   const verificationCode = useRef(null);
   const email = useRef(null);
-  const emailVerificationCode = useRef(null);
 
   // 状态管理
   const [activeTab, setActiveTab] = useState("1");
@@ -35,27 +34,27 @@ function Registered() {
   const register = async () => {
     const usernameValue = username.current.input.value;
     const passwordValue = password.current.input.value;
-    const codeValue =
-      activeTab === "1"
-        ? verificationCode.current.input.value
-        : emailVerificationCode.current.input.value;
+    // const codeValue = activeTab === "1" ? verificationCode.current.input.value : undefined;
 
     // 验证输入
-    if (!usernameValue || !passwordValue || !codeValue)
-      return message.warning("请您输入完整的信息");
+    // if (!usernameValue || !passwordValue || !codeValue)
+    //   return message.warning("请您输入完整的信息");
+
+    if (!usernameValue || !passwordValue) return message.warning("请您输入完整的信息");
 
     setLoading(true);
     let res;
 
     // 根据不同的注册方式调用不同的API
-    if (activeTab === "1") {
+    // if (activeTab === "1") {
+    if (false) {
       const phoneValue = phone.current.input.value;
       if (!phoneValue) return message.warning("请输入手机号");
       res = await registerPhoneApi(usernameValue, passwordValue, phoneValue, codeValue);
     } else {
       const emailValue = email.current.input.value;
       if (!emailValue) return message.warning("请输入邮箱");
-      res = await registerEmailApi(usernameValue, passwordValue, emailValue, codeValue);
+      res = await registerEmailApi(usernameValue, passwordValue, emailValue);
     }
 
     // 处理注册结果
@@ -112,36 +111,36 @@ function Registered() {
 
   // 定义注册表单项
   const items = [
-    {
-      key: "1",
-      label: "手机号注册",
-      children: (
-        <Space direction="vertical" size={12} style={{ width: "100%" }}>
-          <Input placeholder={"请输入用户名"} size="large" ref={username} />
-          <Input
-            placeholder={t("Registered.Registered.903390-9")}
-            type="password"
-            size="large"
-            ref={password}
-            onKeyUp={({ keyCode }) => (keyCode === 13 ? register() : undefined)}
-          />
-          <Input placeholder={"请输入手机号"} size="large" ref={phone} />
-          <CodeCom>
-            <Input placeholder={"请输入验证码"} size="large" ref={verificationCode} />
-            <Button
-              size="large"
-              type="primary"
-              disabled={isSendCode}
-              onClick={sendPhoneCode}
-              loading={codeLoading}
-              style={{ margin: 0, height: 50, width: "35%" }}
-            >
-              {!isSendCode ? "获取验证码" : "已发送"}
-            </Button>
-          </CodeCom>
-        </Space>
-      ),
-    },
+    // {
+    //   key: "1",
+    //   label: "手机号注册",
+    //   children: (
+    //     <Space direction="vertical" size={12} style={{ width: "100%" }}>
+    //       <Input placeholder={"请输入用户名"} size="large" ref={username} />
+    //       <Input
+    //         placeholder={t("Registered.Registered.903390-9")}
+    //         type="password"
+    //         size="large"
+    //         ref={password}
+    //         onKeyUp={({ keyCode }) => (keyCode === 13 ? register() : undefined)}
+    //       />
+    //       <Input placeholder={"请输入手机号"} size="large" ref={phone} />
+    //       <CodeCom>
+    //         <Input placeholder={"请输入验证码"} size="large" ref={verificationCode} />
+    //         <Button
+    //           size="large"
+    //           type="primary"
+    //           disabled={isSendCode}
+    //           onClick={sendPhoneCode}
+    //           loading={codeLoading}
+    //           style={{ margin: 0, height: 50, width: "35%" }}
+    //         >
+    //           {!isSendCode ? "获取验证码" : "已发送"}
+    //         </Button>
+    //       </CodeCom>
+    //     </Space>
+    //   ),
+    // },
     {
       key: "2",
       label: "邮箱注册",
@@ -155,9 +154,8 @@ function Registered() {
             ref={password}
             onKeyUp={({ keyCode }) => (keyCode === 13 ? register() : undefined)}
           />
-          <Input placeholder={"请输入邮箱"} size="large" ref={email} />
           <CodeCom>
-            <Input placeholder={"请输入验证码"} size="large" ref={emailVerificationCode} />
+            <Input placeholder={"请输入邮箱"} size="large" ref={email} />
             <Button
               size="large"
               type="primary"
@@ -166,7 +164,7 @@ function Registered() {
               loading={codeLoading}
               style={{ margin: 0, height: 50, width: "35%" }}
             >
-              {!isSendCode ? "获取验证码" : "已发送"}
+              {!isSendCode ? "发送邮箱验证" : "已发送"}
             </Button>
           </CodeCom>
         </Space>

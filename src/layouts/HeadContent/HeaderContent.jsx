@@ -28,16 +28,16 @@ function HeaderContent() {
 
   const userInfoList = {
     items: [
-      // {
-      //   key: "1",
-      //   label: <span>个人资料</span>,
-      //   onClick: () => history.push('/user/user-info'),
-      // },
-      // {
-      //   key: "2",
-      //   label: <span>使用情况</span>,
-      //   onClick: () => history.push('/user/usage'),
-      // },
+      {
+        key: "1",
+        label: <span>个人资料</span>,
+        onClick: () => history.push("/user-info/user-settings"),
+      },
+      {
+        key: "2",
+        label: <span>使用情况</span>,
+        onClick: () => history.push("/user-info/usage"),
+      },
       {
         key: "3",
         danger: true,
