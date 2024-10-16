@@ -1,6 +1,6 @@
 import { themeColor } from "@/theme/color";
 import { ArrowRightOutlined, LoadingOutlined } from "@ant-design/icons";
-import { App, Badge, Progress, Space, Spin } from "antd";
+import { App, Badge, Space, Spin } from "antd";
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, useHistory } from "react-router-dom/cjs/react-router-dom.min";
