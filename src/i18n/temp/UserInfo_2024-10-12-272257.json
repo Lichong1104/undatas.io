@@ -1,0 +1,20 @@
+{
+	"zh": {
+		"UpdateAvatar.UpdateAvatar.7183125-0": "确定要使用该头像吗？",
+		"UpdateAvatar.UpdateAvatar.7183125-1": "头像更新成功",
+		"UpdateAvatar.UpdateAvatar.7183125-2": "头像更新失败",
+		"UpdateAvatar.UpdateAvatar.7183125-3": "加载中...",
+		"UpdateAvatar.UpdateAvatar.7183125-4": "选择您喜欢的头像",
+		"UpdateAvatar.UpdateAvatar.7183125-5": "预设头像",
+		"UpdateAvatar.UpdateAvatar.7183125-6": "上传头像"
+	},
+	"en": {
+		"UpdateAvatar.UpdateAvatar.7183125-0": "Are you sure you want to use this avatar?",
+		"UpdateAvatar.UpdateAvatar.7183125-1": "Avatar updated successfully",
+		"UpdateAvatar.UpdateAvatar.7183125-2": "Avatar update failed",
+		"UpdateAvatar.UpdateAvatar.7183125-3": "Loading",
+		"UpdateAvatar.UpdateAvatar.7183125-4": "Choose your favorite avatar",
+		"UpdateAvatar.UpdateAvatar.7183125-5": "Pre set avatar",
+		"UpdateAvatar.UpdateAvatar.7183125-6": "Upload profile picture"
+	}
+}

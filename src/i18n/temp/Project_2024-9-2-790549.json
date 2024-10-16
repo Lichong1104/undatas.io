@@ -1,0 +1,36 @@
+{
+  "zh": {
+    "Project.Project.9034110-0": "删除成功！",
+    "Project.Project.9034110-1": "重命名成功！",
+    "Project.Project.9034110-2": "复制项目",
+    "Project.Project.9034110-3": "暂不支持！",
+    "Project.Project.9034110-4": "合并项目",
+    "Project.Project.9034110-5": "重命名项目",
+    "Project.Project.9034110-6": "删除项目",
+    "Project.Project.9034110-7": "复制项目 ID",
+    "Project.Project.9034110-8": "复制成功！",
+    "Project.Project.9034110-9": "复制工作空间 ID",
+    "Project.Project.9034110-10": "项目列表",
+    "Project.Project.9034110-11": "创建新项目",
+    "Project.Project.9034110-12": "删除此项Project",
+    "Project.Project.9034110-13": "删除后不可恢复，您可继续创建新的Project！",
+    "Project.Project.9034110-14": "请输入项目名"
+  },
+  "en": {
+    "Project.Project.9034110-0": "Delete successfully!",
+    "Project.Project.9034110-1": "Renaming successful!",
+    "Project.Project.9034110-2": "Copy project",
+    "Project.Project.9034110-3": "Not currently supported!",
+    "Project.Project.9034110-4": "Merge projects",
+    "Project.Project.9034110-5": "Rename project",
+    "Project.Project.9034110-6": "delete item",
+    "Project.Project.9034110-7": "Copy project ID",
+    "Project.Project.9034110-8": "Copy successful!",
+    "Project.Project.9034110-9": "Copy workspace ID",
+    "Project.Project.9034110-10": "Project List",
+    "Project.Project.9034110-11": "Create a new project",
+    "Project.Project.9034110-12": "Delete this project item",
+    "Project.Project.9034110-13": "After deletion, it cannot be restored. You can continue to create a new project!",
+    "Project.Project.9034110-14": "Please enter the project name"
+  }
+}

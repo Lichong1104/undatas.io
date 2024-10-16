@@ -1,0 +1,22 @@
+{
+	"zh": {
+		"BaseView.BaseView.7183021-0": "更新成功",
+		"BaseView.BaseView.7183021-1": "更新中...",
+		"BaseView.BaseView.7183021-2": "昵称",
+		"BaseView.BaseView.7183021-3": "用户名",
+		"BaseView.BaseView.7183021-4": "邮箱",
+		"BaseView.BaseView.7183021-5": "手机号",
+		"BaseView.BaseView.7183021-6": "个人简介",
+		"BaseView.BaseView.7183021-7": "更新基本信息"
+	},
+	"en": {
+		"BaseView.BaseView.7183021-0": "Update successful",
+		"BaseView.BaseView.7183021-1": "Updating",
+		"BaseView.BaseView.7183021-2": "nickname",
+		"BaseView.BaseView.7183021-3": "user name",
+		"BaseView.BaseView.7183021-4": "mailbox",
+		"BaseView.BaseView.7183021-5": "cell-phone number",
+		"BaseView.BaseView.7183021-6": "Personal Profile",
+		"BaseView.BaseView.7183021-7": "Update basic information"
+	}
+}

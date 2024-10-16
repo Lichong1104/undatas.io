@@ -1,0 +1,38 @@
+{
+	"zh": {
+		"SecurityView.SecurityView.7183019-0": "强",
+		"SecurityView.SecurityView.7183019-1": "中",
+		"SecurityView.SecurityView.7183019-2": "弱 Weak",
+		"SecurityView.SecurityView.7183019-3": "账户密码",
+		"SecurityView.SecurityView.7183019-4": "当前密码强度：",
+		"SecurityView.SecurityView.7183019-5": "修改",
+		"SecurityView.SecurityView.7183019-6": "密保手机",
+		"SecurityView.SecurityView.7183019-7": "已绑定手机：138****8293",
+		"SecurityView.SecurityView.7183019-8": "密保问题",
+		"SecurityView.SecurityView.7183019-9": "未设置密保问题，密保问题可有效保护账户安全",
+		"SecurityView.SecurityView.7183019-10": "设置",
+		"SecurityView.SecurityView.7183019-11": "备用邮箱",
+		"SecurityView.SecurityView.7183019-12": "已绑定邮箱：ant***sign.com",
+		"SecurityView.SecurityView.7183019-13": "MFA 设备",
+		"SecurityView.SecurityView.7183019-14": "未绑定 MFA 设备，绑定后，可以进行二次确认",
+		"SecurityView.SecurityView.7183019-15": "绑定"
+	},
+	"en": {
+		"SecurityView.SecurityView.7183019-0": "strong",
+		"SecurityView.SecurityView.7183019-1": "in",
+		"SecurityView.SecurityView.7183019-2": "Weak Weak",
+		"SecurityView.SecurityView.7183019-3": "Account password",
+		"SecurityView.SecurityView.7183019-4": "Current password strength:",
+		"SecurityView.SecurityView.7183019-5": "modify",
+		"SecurityView.SecurityView.7183019-6": "Confidential mobile phone",
+		"SecurityView.SecurityView.7183019-7": "Already bound phone: 138 ****** 8293",
+		"SecurityView.SecurityView.7183019-8": "security question ",
+		"SecurityView.SecurityView.7183019-9": "No security issue has been set, which can effectively protect account security",
+		"SecurityView.SecurityView.7183019-10": "set up",
+		"SecurityView.SecurityView.7183019-11": "Backup email",
+		"SecurityView.SecurityView.7183019-12": "Already bound email: ant**** sign.com",
+		"SecurityView.SecurityView.7183019-13": "MFA equipment",
+		"SecurityView.SecurityView.7183019-14": "Unbound MFA device, after binding, secondary confirmation can be performed",
+		"SecurityView.SecurityView.7183019-15": "binding"
+	}
+}
