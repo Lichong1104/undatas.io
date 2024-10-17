@@ -11,6 +11,7 @@ import PdfParserPro from "../FileDetail/PdfParserPro";
 import { getBinaryFileContent } from "@/api/s3Api";
 import PdfParser from "../FileDetail/PdfParser";
 import { socketTaskVision } from "@/api/socketApi";
+import { serverUrl } from "@/api/request";
 
 function VersionInfo(props) {
   const history = useHistory();
@@ -26,53 +27,55 @@ function VersionInfo(props) {
   const socketRef = useRef(null);
 
   // 初始化并建立 WebSocket 连接
-  // const init = async () => {
-  //   setLoading(true);
+  const init = async () => {
+    setLoading(true);
 
-  //   // 确保只有一次初始化
-  //   if (socketRef.current) {
-  //     socketRef.current.close();
-  //   }
+    // 确保只有一次初始化
+    if (socketRef.current) {
+      socketRef.current.close();
+    }
 
-  //   const params = {
-  //     task_id: project.task_id,
-  //     vision: props.info.vision,
-  //     count: "10",
-  //   };
+    const params = {
+      task_id: project.task_id,
+      vision: props.info.vision,
+      count: "10",
+    };
 
-  //   // 建立 WebSocket 连接
-  //   socketRef.current = new WebSocket("ws://116.204.67.82:8087/api/socket/socket_task_vision");
+    // 建立 WebSocket 连接
+    socketRef.current = new WebSocket(
+      `wss://backendwss.undatas.io/api/socket/socket_task_vision`
+    );
 
-  //   // WebSocket 连接打开时发送参数
-  //   socketRef.current.onopen = () => {
-  //     socketRef.current.send(JSON.stringify(params));
-  //   };
+    // WebSocket 连接打开时发送参数
+    socketRef.current.onopen = () => {
+      socketRef.current.send(JSON.stringify(params));
+    };
 
-  //   // 接收到 WebSocket 数据时更新 fileList
-  //   socketRef.current.onmessage = async (event) => {
-  //     const res = JSON.parse(event.data);
-  //     // 如果项目类型不是 pdfParser，则设置 fileList
-  //     if (project.task_type !== "pdfParser" && project.task_type !== "pdfParserPro") {
-  //       setFileList(res);
-  //       return setLoading(false);
-  //     }
-  //     const dataPromise = res?.map(async (v, i) => {
-  //       const image_path = await getBinaryFileContent(v.image_path);
-  //       return {
-  //         ...v,
-  //         image_path,
-  //       };
-  //     });
-  //     const data = await Promise.all(dataPromise);
-  //     setLoading(false);
-  //     setFileList(data);
-  //   };
+    // 接收到 WebSocket 数据时更新 fileList
+    socketRef.current.onmessage = async (event) => {
+      const res = JSON.parse(event.data);
+      // 如果项目类型不是 pdfParser，则设置 fileList
+      if (project.task_type !== "pdfParser" && project.task_type !== "pdfParserPro") {
+        setFileList(res);
+        return setLoading(false);
+      }
+      const dataPromise = res?.map(async (v, i) => {
+        const image_path = await getBinaryFileContent(v.image_path);
+        return {
+          ...v,
+          image_path,
+        };
+      });
+      const data = await Promise.all(dataPromise);
+      setLoading(false);
+      setFileList(data);
+    };
 
-  //   // WebSocket 关闭时清理
-  //   socketRef.current.onclose = () => {
-  //     console.log("WebSocket connection closed");
-  //   };
-  // };
+    // WebSocket 关闭时清理
+    socketRef.current.onclose = () => {
+      console.log("WebSocket connection closed");
+    };
+  };
 
   // 当 version 或 props 变化时重新连接 WebSocket
   useEffect(() => {
@@ -80,7 +83,7 @@ function VersionInfo(props) {
   }, [props]);
 
   useEffect(() => {
-    // init();
+    init();
 
     return () => {
       if (socketRef.current) {
@@ -128,16 +131,7 @@ function VersionInfo(props) {
           </ViewData>
         </FileTitle>
         <FileList>
-          {/* {fileList?.map((v, i) => (
-            <FileItem
-              onClick={() => fileDetail(v.file_id, v.result)}
-              key={i}
-              style={{ backgroundImage: `url(${v.image_path})` }}
-            >
-              <Status>{v.result ? <Badge status="success" /> : undefined}</Status>
-            </FileItem>
-          ))} */}
-          {props.info.file_info?.map((v, i) => (
+          {fileList?.map((v, i) => (
             <FileItem
               onClick={() => fileDetail(v.file_id, v.result)}
               key={i}
@@ -146,6 +140,15 @@ function VersionInfo(props) {
               <Status>{v.result ? <Badge status="success" /> : undefined}</Status>
             </FileItem>
           ))}
+          {/* {props.info.file_info?.map((v, i) => (
+            <FileItem
+              onClick={() => fileDetail(v.file_id, v.result)}
+              key={i}
+              style={{ backgroundImage: `url(${v.image_path})` }}
+            >
+              <Status>{v.result ? <Badge status="success" /> : undefined}</Status>
+            </FileItem>
+          ))} */}
         </FileList>
 
         <Route path="/versions/version-info/videoCut" component={VideoCut} />

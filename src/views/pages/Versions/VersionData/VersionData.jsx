@@ -42,7 +42,9 @@ function VersionData(props) {
     };
 
     // 建立 WebSocket 连接
-    socketRef.current = new WebSocket("ws://116.204.67.82:8087/api/socket/socket_task_vision");
+    socketRef.current = new WebSocket(
+      `wss://backendwss.undatas.io/api/socket/socket_task_vision`
+    );
 
     // WebSocket 连接打开时发送参数
     socketRef.current.onopen = () => {
@@ -87,7 +89,7 @@ function VersionData(props) {
 
   // 文件详情
   const fileDetail = (file_id, result) => {
-    if (!result) return message.warning(t('VersionData.VersionData.7183010-0'));
+    if (!result) return message.warning(t("VersionData.VersionData.7183010-0"));
     const payload = {
       file_id,
       task_type: project.task_type,
