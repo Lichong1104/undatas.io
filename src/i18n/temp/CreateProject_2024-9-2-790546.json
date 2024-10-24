@@ -18,7 +18,12 @@
     "CreateProject.CreateProject.9034112-15": "项目介绍",
     "CreateProject.CreateProject.9034112-16": "项目类型",
     "CreateProject.CreateProject.9034112-17": "取消",
-    "CreateProject.CreateProject.9034112-18": "创建"
+    "CreateProject.CreateProject.9034112-18": "创建",
+    "CreateProject.CreateProject.7183128-0": "文本解析 1.0",
+    "CreateProject.CreateProject.7183128-1": "文本解析 2.0",
+    "CreateProject.CreateProject.7183128-2": "更加高效的PDF解析工具，支持多种格式和快速处理，助力您的文档管理与信息提取",
+    "CreateProject.CreateProject.783725-0": "暂不支持！",
+    "CreateProject.CreateProject.783725-1": "该功能暂不可用"
   },
   "en": {
     "CreateProject.CreateProject.9034112-0": "Created successfully",
@@ -27,18 +32,23 @@
     "CreateProject.CreateProject.9034112-3": "Video understanding technology can automatically recognize and analyze video content, thereby extracting valuable information and patterns.",
     "CreateProject.CreateProject.9034112-4": "Video Cutting",
     "CreateProject.CreateProject.9034112-5": "The video segmentation function allows users to segment videos based on specific times or events for later editing and processing.",
-    "CreateProject.CreateProject.9034112-6": "Text Parsing",
-    "CreateProject.CreateProject.9034112-7": "Text Parsing tools can extract text, images, and other data from files such as PDF and Word, making it convenient for users to reuse and analyze content.",
+    "CreateProject.CreateProject.9034112-6": "Document Parsing",
+    "CreateProject.CreateProject.9034112-7": "Parse documents(pdf,docx,pptx,jpg,png,...) to markdown or JSON",
     "CreateProject.CreateProject.9034112-8": "Audio Parse",
     "CreateProject.CreateProject.9034112-9": "The Audio Parse system can automatically record and analyze audio content, generate audio minutes and action items, and improve work efficiency.",
     "CreateProject.CreateProject.9034112-10": "Creating project",
     "CreateProject.CreateProject.9034112-11": "Create your new project",
-    "CreateProject.CreateProject.9034112-12": "entry name",
+    "CreateProject.CreateProject.9034112-12": "Entry name",
     "CreateProject.CreateProject.9034112-13": "This option must be filled in",
-    "CreateProject.CreateProject.9034112-14": "Is it publicly available",
+    "CreateProject.CreateProject.9034112-14": "Publicly available",
     "CreateProject.CreateProject.9034112-15": "Project Introduction",
     "CreateProject.CreateProject.9034112-16": "Project type",
     "CreateProject.CreateProject.9034112-17": "cancel",
-    "CreateProject.CreateProject.9034112-18": "establish"
+    "CreateProject.CreateProject.9034112-18": "create",
+    "CreateProject.CreateProject.7183128-0": "Document Parsing 1.0",
+    "CreateProject.CreateProject.7183128-1": "Document Parsing 2.0",
+    "CreateProject.CreateProject.7183128-2": "Parse more complex table or document to JSON",
+    "CreateProject.CreateProject.783725-0": "Not currently supported!",
+    "CreateProject.CreateProject.783725-1": "Comming soon"
   }
 }

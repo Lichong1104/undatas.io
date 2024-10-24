@@ -7,7 +7,7 @@ import {
   FontColorsOutlined,
   LoadingOutlined,
 } from "@ant-design/icons";
-import { App, Button, Form, Input, Select, Space, Spin, Tag } from "antd";
+import { App, Button, Form, Input, Select, Space, Spin, Tag, Tooltip } from "antd";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
@@ -28,6 +28,11 @@ function CreateProject() {
 
   // 提交
   const onFinish = async (values) => {
+    // 不创建video
+    if (currentType === "videoNotion" || currentType === "videoCut") {
+      return message.warning(t('CreateProject.CreateProject.783725-0'));
+    }
+
     setLoading(true);
     const data = { ...values, work_id: workId, task_type: currentType };
     const res = await createProjectApi(data);
@@ -44,11 +49,28 @@ function CreateProject() {
 
   const typeList = [
     {
+      type: "pdfParser",
+      num: 211,
+      title: t("CreateProject.CreateProject.7183128-0"),
+      img: pdfParserImage,
+      desc: t("CreateProject.CreateProject.9034112-7"),
+      disabled: false,
+    },
+    {
+      type: "pdfParserPro",
+      num: 352,
+      title: t("CreateProject.CreateProject.7183128-1"),
+      img: pdfParserProImage,
+      desc: t("CreateProject.CreateProject.7183128-2"),
+      disabled: false,
+    },
+    {
       type: "videoNotion",
       num: 352,
       title: t("CreateProject.CreateProject.9034112-2"),
       img: videoNotionImage,
       desc: t("CreateProject.CreateProject.9034112-3"),
+      disabled: true,
     },
     {
       type: "videoCut",
@@ -56,20 +78,7 @@ function CreateProject() {
       title: t("CreateProject.CreateProject.9034112-4"),
       img: videoCutImage,
       desc: t("CreateProject.CreateProject.9034112-5"),
-    },
-    {
-      type: "pdfParser",
-      num: 211,
-      title: t('CreateProject.CreateProject.7183128-0'),
-      img: pdfParserImage,
-      desc: t("CreateProject.CreateProject.9034112-7"),
-    },
-    {
-      type: "pdfParserPro",
-      num: 352,
-      title: t('CreateProject.CreateProject.7183128-1'),
-      img: pdfParserProImage,
-      desc: t('CreateProject.CreateProject.7183128-2'),
+      disabled: true,
     },
     {
       type: "meet",
@@ -77,15 +86,18 @@ function CreateProject() {
       title: t("CreateProject.CreateProject.9034112-8"),
       img: meetImage,
       desc: t("CreateProject.CreateProject.9034112-9"),
+      disabled: true,
     },
   ];
 
   // 当前选中类型
-  const [currentType, setCurrentType] = useState("videoNotion");
+  const [currentType, setCurrentType] = useState("pdfParser");
 
   // 切换类型
   const typeChange = (v) => {
-    setCurrentType(v.type);
+    if (!v.disabled) {
+      setCurrentType(v.type);
+    }
   };
 
   return (
@@ -104,12 +116,7 @@ function CreateProject() {
             <span>New Public Project</span>
           </Placeholder>
 
-          <Form
-            form={form}
-            layout="vertical"
-            name="form"
-            initialValues={{ license: "Public", task_info: "" }}
-          >
+          <Form form={form} layout="vertical" name="form" initialValues={{ license: "Public", task_info: "" }}>
             <InputBox>
               <Form.Item
                 name="task_name"
@@ -151,32 +158,34 @@ function CreateProject() {
           <CardList>
             {typeList.map((v, i) => {
               return (
-                <Card onClick={() => typeChange(v)} key={i} $isActive={v.type === currentType}>
-                  <div>
-                    <img src={v.img} alt="" />
-                    <h2>{v.title}</h2>
-                    <p>{v.desc}</p>
-                  </div>
+                <Tooltip key={i} title={v.disabled ? t('CreateProject.CreateProject.783725-1') : ""}>
+                  <Card onClick={() => typeChange(v)} $isActive={v.type === currentType} $isDisabled={v.disabled}>
+                    <div>
+                      <img src={v.img} alt="" />
+                      <h2>{v.title}</h2>
+                      <p>{v.desc}</p>
+                    </div>
 
-                  <div>
-                    <Space>
-                      <Tag
-                        color={v.type === currentType ? themeColor.hover : "#eaeaefd3"}
-                        style={{ color: "black" }}
-                        icon={<UnderlineOutlined />}
-                      >
-                        {v.type}
-                      </Tag>
-                      <Tag
-                        color={v.type === currentType ? themeColor.hover : "#eaeaefd3"}
-                        style={{ color: "black" }}
-                        icon={<FontColorsOutlined />}
-                      >
-                        {v.num}
-                      </Tag>
-                    </Space>
-                  </div>
-                </Card>
+                    <div>
+                      <Space>
+                        <Tag
+                          color={v.type === currentType ? themeColor.hover : "#eaeaefd3"}
+                          style={{ color: "black" }}
+                          icon={<UnderlineOutlined />}
+                        >
+                          {v.type}
+                        </Tag>
+                        <Tag
+                          color={v.type === currentType ? themeColor.hover : "#eaeaefd3"}
+                          style={{ color: "black" }}
+                          icon={<FontColorsOutlined />}
+                        >
+                          {v.num}
+                        </Tag>
+                      </Space>
+                    </div>
+                  </Card>
+                </Tooltip>
               );
             })}
           </CardList>
@@ -185,9 +194,7 @@ function CreateProject() {
           <Form form={form} layout="vertical" onFinish={onFinish}>
             <Form.Item style={{ margin: 0 }}>
               <Space size="middle">
-                <Button onClick={() => history.push("/project")}>
-                  {t("CreateProject.CreateProject.9034112-17")}
-                </Button>
+                <Button onClick={() => history.push("/project")}>{t("CreateProject.CreateProject.9034112-17")}</Button>
                 <Button type="primary" htmlType="submit">
                   {t("CreateProject.CreateProject.9034112-18")}
                 </Button>
@@ -262,17 +269,17 @@ const Card = styled.div`
   flex-direction: column;
   width: calc(25% - 27px); // 考虑到间隔,宽度略小于25%
   padding: 12px;
-  background-color: white;
+  background-color: ${(props) => (props.$isDisabled ? "#f5f5f5" : "white")};
   border-radius: 8px;
-  cursor: pointer;
+  cursor: ${(props) => (props.$isDisabled ? "not-allowed" : "pointer")};
   gap: 20px;
-  border: ${(props) =>
-    props.$isActive ? `2px solid ${themeColor.primary}` : `2px solid #b4b4b958`};
+  border: ${(props) => (props.$isActive ? `2px solid ${themeColor.primary}` : `2px solid #b4b4b958`)};
   transition: all.2s;
   box-shadow: 0 0 10px 0 ${(props) => (props.$isActive ? "#2313d392" : "rgba(0, 0, 0, 0)")};
+  opacity: ${(props) => (props.$isDisabled ? 0.5 : 1)};
   &:hover {
-    box-shadow: 0 0 10px 0
-      ${(props) => (props.$isActive ? "#2313d392" : "rgba(0, 0, 0, 0.217)")};
+    box-shadow: ${(props) =>
+      props.$isDisabled ? "none" : `0 0 10px 0 ${props.$isActive ? "#2313d392" : "rgba(0, 0, 0, 0.217)"}`};
   }
   img {
     width: 100%;

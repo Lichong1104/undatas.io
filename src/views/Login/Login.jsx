@@ -30,14 +30,14 @@ function Login() {
     const res = await sendEmailCodeApi(emailRef.current.input.value).finally(() => setCodeLoading(false));
     if (res.code !== 200) return message.error(res.msg);
     setIsSendCode(true);
-    message.success(t('Login.Login.554723-0'));
+    message.success(t("Login.Login.554723-0"));
   };
 
   // 登录
   const login = async () => {
     const emailValue = emailRef.current.input.value;
     const verificationCodeValue = verificationCode.current.input.value;
-    if (!emailValue || !verificationCodeValue) return message.warning(t('Login.Login.554723-1'));
+    if (!emailValue || !verificationCodeValue) return message.warning(t("Login.Login.554723-1"));
 
     setLoginLoading(true);
     const res = await loginApi(emailValue, verificationCodeValue, "");
@@ -70,7 +70,7 @@ function Login() {
           <h1>UNDATAS.IO</h1>
           <p>{t("Login.Login.9034114-3")}</p>
         </div>
-        <p>© 2024 MIND-COMPUTE AI</p>
+        <p>© 2024 UNDATAS.IO</p>
       </BackGround>
       <Action>
         <LoginBox>
@@ -81,15 +81,15 @@ function Login() {
           {/* <h2>
             {t("Login.Login.9034114-5")} <a href="/#">{t("Login.Login.9034114-6")}</a>
           </h2> */}
-          <h2>{t('Login.Login.554723-2')}</h2>
+          <h2>{t("Login.Login.554723-2")}</h2>
           <MyGoogleLogin onLoading={(v) => setLoginLoading(v)} />
           <Divider plain style={{ margin: 4 }}>
             OR
           </Divider>
           <Space direction="vertical" size={12} style={{ width: "100%" }}>
-            <Input placeholder={t('Login.Login.554723-3')} size="large" ref={emailRef} />
+            <Input placeholder={t("Login.Login.554723-3")} size="large" ref={emailRef} />
             <CodeCom>
-              <Input placeholder={t('Login.Login.554723-4')} size="large" ref={verificationCode} />
+              <Input placeholder={t("Login.Login.554723-4")} size="large" ref={verificationCode} />
               <Button
                 size="large"
                 type="primary"
@@ -98,7 +98,7 @@ function Login() {
                 loading={codeLoading}
                 style={{ margin: 0, height: 50, width: "60%" }}
               >
-                {!isSendCode ? t('Login.Login.554723-5') : t('Login.Login.554723-6')}
+                {!isSendCode ? t("Login.Login.554723-5") : t("Login.Login.554723-6")}
               </Button>
             </CodeCom>
             <Button
@@ -112,11 +112,11 @@ function Login() {
             </Button>
           </Space>
           <span>
-            {t('Login.Login.554723-7')}{" "}
+            {t("Login.Login.554723-7")}{" "}
             <a href="https://privacy-policy.undatas.io" target="_blank">
-              {t('Login.Login.554723-8')}
+              {t("Login.Login.554723-8")}
             </a>
-            {t('Login.Login.554723-9')}
+            {t("Login.Login.554723-9")}
           </span>
         </LoginBox>
       </Action>

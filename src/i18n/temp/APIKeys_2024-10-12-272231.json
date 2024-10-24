@@ -1,20 +1,20 @@
 {
-	"zh": {
-		"APIKeys.APIKeys.7183127-0": "复制成功",
-		"APIKeys.APIKeys.7183127-1": "API 密钥是用于将 UnDatasio API",
-		"APIKeys.APIKeys.7183127-2": "集成到您的应用程序中的可撤销凭证。使用您的密钥获取我们的资源，并将图像从外部来源直接上传到您的项目。",
-		"APIKeys.APIKeys.7183127-3": "可发布的 API 密钥",
-		"APIKeys.APIKeys.7183127-4": "仅用于 undatasio.js。",
-		"APIKeys.APIKeys.7183127-5": "私有 API 密钥",
-		"APIKeys.APIKeys.7183127-6": "用于 undatasio.js 和 API 端点。"
-	},
-	"en": {
-		"APIKeys.APIKeys.7183127-0": "Copy successful",
-		"APIKeys.APIKeys.7183127-1": "The API key is used to access the UnDatasio API",
-		"APIKeys.APIKeys.7183127-2": "Revocable credentials integrated into your application. Use your key to access our resources and upload images directly to your project from external sources.",
-		"APIKeys.APIKeys.7183127-3": "Publishable API keys",
-		"APIKeys.APIKeys.7183127-4": "Only used for undasio. js.",
-		"APIKeys.APIKeys.7183127-5": "Private API Key",
-		"APIKeys.APIKeys.7183127-6": "Used for undasio. js and API endpoints."
-	}
+  "zh": {
+    "APIKeys.APIKeys.7183127-0": "复制成功",
+    "APIKeys.APIKeys.7183127-1": "API 密钥是用于将 UnDatasio API",
+    "APIKeys.APIKeys.7183127-2": "集成到您的应用程序中的可撤销凭证。使用您的密钥获取我们的资源，并将图像从外部来源直接上传到您的项目。",
+    "APIKeys.APIKeys.7183127-3": "可发布的 API 密钥",
+    "APIKeys.APIKeys.7183127-4": "仅用于 undatasio.js。",
+    "APIKeys.APIKeys.7183127-5": "私有 API 密钥",
+    "APIKeys.APIKeys.7183127-6": "用于 undatasio.js 和 API 端点。"
+  },
+  "en": {
+    "APIKeys.APIKeys.7183127-0": "Copy successful",
+    "APIKeys.APIKeys.7183127-1": "The API key is used to access the UnDatasio API ",
+    "APIKeys.APIKeys.7183127-2": "Revocable credentials integrated into your application. Use your key to access our resources and upload images directly to your project from external sources.",
+    "APIKeys.APIKeys.7183127-3": "Publishable API keys",
+    "APIKeys.APIKeys.7183127-4": "Only used for undasio. js.",
+    "APIKeys.APIKeys.7183127-5": "Private API Key",
+    "APIKeys.APIKeys.7183127-6": "Used for undasio. js and API endpoints."
+  }
 }

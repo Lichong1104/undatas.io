@@ -63,13 +63,7 @@ function UploadData() {
       const uploadFile = async (uploadFn, progressCallback) => {
         updateUploadStatus("uploading", 0);
         const res = await uploadFn(progressCallback);
-        await noticeUploadApi(
-          workId,
-          project.task_id,
-          file.name,
-          md5(file.name),
-          project.task_type
-        );
+        await noticeUploadApi(workId, project.task_id, file.name, md5(file.name), project.task_type);
         updateUploadStatus(res.res.status ? "success" : "fail");
       };
 
@@ -80,8 +74,7 @@ function UploadData() {
         );
       } else {
         await uploadFile(
-          (progressCallback) =>
-            multipartUploadApi(project.task_id, project.task_type, file, progressCallback),
+          (progressCallback) => multipartUploadApi(project.task_id, project.task_type, file, progressCallback),
           (p) => updateUploadStatus("uploading", p * 100)
         );
       }
@@ -137,32 +130,19 @@ function UploadData() {
           <ArrowUpOutlined />
         </UploadIcon>
 
-        <h1>
-          {t("UploadData.UploadData.7725630-0")}
-          {t("UploadData.UploadData.903409-0")}
-        </h1>
-        <h1 style={{ marginTop: "-12px" }}>
-          {t("UploadData.UploadData.7725630-1")}
-          {t("UploadData.UploadData.903409-6")}
-        </h1>
+        <h1>{t("UploadData.UploadData.483485-0")}</h1>
+        <h1 style={{ marginTop: "-12px" }}>{t("UploadData.UploadData.863539-0")}</h1>
 
         <Space ref={tourRef}>
           <Button icon={<FileDoneOutlined />} onClick={() => fileInput.current.click()}>
             {t("UploadData.UploadData.903409-9")}
           </Button>
           <Button icon={<FolderOpenOutlined />} onClick={() => folderInput.current.click()}>
-            {t("UploadData.UploadData.903409-9")}
-            {t("UploadData.UploadData.7725630-2")}
+            {t("UploadData.UploadData.147838-0")}
           </Button>
         </Space>
 
-        <input
-          type="file"
-          style={{ display: "none" }}
-          ref={fileInput}
-          multiple
-          onChange={fileUpload}
-        />
+        <input type="file" style={{ display: "none" }} ref={fileInput} multiple onChange={fileUpload} />
         <input
           type="file"
           style={{ display: "none" }}
@@ -172,10 +152,7 @@ function UploadData() {
         />
 
         <div style={{ marginTop: 12 }}>
-          <p style={{ fontSize: 12, textAlign: "center" }}>
-            {t("UploadData.UploadData.903409-0")}
-            {t("UploadData.UploadData.7725630-3")}
-          </p>
+          <p style={{ fontSize: 12, textAlign: "center" }}>{t("UploadData.UploadData.147838-1")}</p>
           <FileFormats>
             <div>
               <Space>
@@ -185,7 +162,7 @@ function UploadData() {
 
               <p>in .pdf .pptx .ppt .docx .doc</p>
             </div>
-            <div>
+            {/* <div>
               <Space>
                 <HeatMapOutlined /> Annotations
               </Space>
@@ -197,7 +174,7 @@ function UploadData() {
                 Videos
               </Space>
               <p>in .mov, .mp4, .avi</p>
-            </div>
+            </div> */}
           </FileFormats>
         </div>
 
@@ -253,7 +230,7 @@ const UploadBox = styled.div`
   h1 {
     color: ${themeColor.primary};
     font-weight: 500;
-    letter-spacing: 4px;
+    letter-spacing: 2px;
     font-size: 24px;
   }
   > span {
@@ -279,6 +256,8 @@ const FileFormats = styled.div`
   padding: 12px;
   border-radius: 8px;
   margin-top: 8px;
+
+  padding: 12px 120px;
 `;
 
 export default UploadData;

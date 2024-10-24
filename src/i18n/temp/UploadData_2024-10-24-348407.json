@@ -1,0 +1,14 @@
+{
+  "zh": {
+    "UploadData.UploadData.483485-0": "请点击下方按钮上传文件",
+    "UploadData.UploadData.863539-0": "可以同时选中多个文件上传",
+    "UploadData.UploadData.147838-0": "选择文件夹",
+    "UploadData.UploadData.147838-1": "上传文件的格式"
+  },
+  "en": {
+    "UploadData.UploadData.483485-0": "Please click the button below to upload the file",
+    "UploadData.UploadData.863539-0": "Multiple files can be selected and uploaded simultaneously",
+    "UploadData.UploadData.147838-0": "Select folder",
+    "UploadData.UploadData.147838-1": "Format of uploaded files"
+  }
+}
