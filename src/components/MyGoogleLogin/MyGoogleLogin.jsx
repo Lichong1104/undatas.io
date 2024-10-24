@@ -31,8 +31,6 @@ function GoogleLoginButton({ onLoading }) {
       payload: res.data[0].user_avatar,
     });
 
-    // a
-
     notification.success({
       message: t("Login.Login.9034114-1"),
       description: t("Login.Login.9034114-2"),
