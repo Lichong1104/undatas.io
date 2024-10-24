@@ -1,0 +1,20 @@
+{
+	"zh": {
+		"BindingView.BindingView.7183123-0": "绑定淘宝",
+		"BindingView.BindingView.7183123-1": "当前未绑定淘宝账号",
+		"BindingView.BindingView.7183123-2": "绑定",
+		"BindingView.BindingView.7183123-3": "绑定支付宝",
+		"BindingView.BindingView.7183123-4": "当前未绑定支付宝账号",
+		"BindingView.BindingView.7183123-5": "绑定钉钉",
+		"BindingView.BindingView.7183123-6": "当前未绑定钉钉账号"
+	},
+	"en": {
+		"BindingView.BindingView.7183123-0": "Bind Taobao",
+		"BindingView.BindingView.7183123-1": "Currently unbound Taobao account",
+		"BindingView.BindingView.7183123-2": "binding",
+		"BindingView.BindingView.7183123-3": "Bind Alipay",
+		"BindingView.BindingView.7183123-4": "Currently, Alipay account is not bound",
+		"BindingView.BindingView.7183123-5": "Bind DingTalk",
+		"BindingView.BindingView.7183123-6": "Currently unbound DingTalk account"
+	}
+}

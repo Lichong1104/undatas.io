@@ -1,0 +1,15 @@
+# 特定路径重定向示例
+/old-page    /new-page    301
+
+# API 请求不重定向
+/api/*    200
+
+# 静态资源不重定向
+/static/*    200
+
+# 所有其他路径重定向到 index.html
+/*    /index.html   200
+
+# 处理 404 错误
+/* /404.html 404
+

@@ -1,0 +1,20 @@
+{
+	"zh": {
+		"UploadProgress.UploadProgress.7725654-0": "文件名",
+		"UploadProgress.UploadProgress.7725654-1": "文件大小",
+		"UploadProgress.UploadProgress.7725654-2": "状态",
+		"UploadProgress.UploadProgress.7725654-3": "任务列表",
+		"UploadProgress.UploadProgress.7725654-4": "清除记录",
+		"UploadProgress.UploadProgress.7725654-5": "当前您没有上传任何文件！",
+		"UploadProgress.UploadProgress.7725654-6": "请进入项目中选择您想要上传的文件进行上传！"
+	},
+	"en": {
+		"UploadProgress.UploadProgress.7725654-0": "file name",
+		"UploadProgress.UploadProgress.7725654-1": "file size",
+		"UploadProgress.UploadProgress.7725654-2": "state",
+		"UploadProgress.UploadProgress.7725654-3": "task list",
+		"UploadProgress.UploadProgress.7725654-4": "Clear records",
+		"UploadProgress.UploadProgress.7725654-5": "Currently, you have not uploaded any files!",
+		"UploadProgress.UploadProgress.7725654-6": "Please enter the project and select the file you want to upload for upload!"
+	}
+}

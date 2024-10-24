@@ -1,0 +1,24 @@
+{
+  "zh": {
+    "Usage.Usage.718309-0": "使用项目",
+    "Usage.Usage.718309-1": "使用文件",
+    "Usage.Usage.718309-2": "扣除金额",
+    "Usage.Usage.718309-3": "剩余金额",
+    "Usage.Usage.718309-4": "使用时间",
+    "Usage.Usage.718309-5": "您当前的余额剩余：",
+    "Usage.Usage.718309-6": "元",
+    "Usage.Usage.718309-7": "工作区",
+    "Usage.Usage.718309-8": "项目"
+  },
+  "en": {
+    "Usage.Usage.718309-0": "Use project",
+    "Usage.Usage.718309-1": "Using files",
+    "Usage.Usage.718309-2": "Deduction amount",
+    "Usage.Usage.718309-3": "Remaining amount",
+    "Usage.Usage.718309-4": "Usage time",
+    "Usage.Usage.718309-5": "Your current balance remaining:",
+    "Usage.Usage.718309-6": "dollars",
+    "Usage.Usage.718309-7": "work area",
+    "Usage.Usage.718309-8": "project"
+  }
+}

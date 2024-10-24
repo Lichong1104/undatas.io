@@ -1,0 +1,14 @@
+{
+	"zh": {
+		"FileDetail.VideoCut.903406-0": "视频详情",
+		"FileDetail.VideoCut.903406-1": "加载中...",
+		"FileDetail.VideoCut.903406-2": "第",
+		"FileDetail.VideoCut.903406-3": "段视频，地址："
+	},
+	"en": {
+		"FileDetail.VideoCut.903406-0": "Video Details",
+		"FileDetail.VideoCut.903406-1": "Loading",
+		"FileDetail.VideoCut.903406-2": "The",
+		"FileDetail.VideoCut.903406-3": "Video clip, address:"
+	}
+}

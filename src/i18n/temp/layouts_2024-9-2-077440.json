@@ -1,0 +1,20 @@
+{
+  "zh": {
+    "WorkSpaceSide.WorkSpaceSide.7725621-0": "获取work失败！",
+    "WorkSpaceSide.WorkSpaceSide.7725621-1": "{0}创建成功",
+    "WorkSpaceSide.WorkSpaceSide.7725621-2": "您可以在此work下创建Project！",
+    "WorkSpaceSide.WorkSpaceSide.7725621-3": "工作空间设置",
+    "WorkSpaceSide.WorkSpaceSide.7725621-4": "请输入名字",
+    "WorkSpaceSide.WorkSpaceSide.7725621-5": "确定",
+    "WorkSpaceSide.WorkSpaceSide.7725621-6": "创建工作空间"
+  },
+  "en": {
+    "WorkSpaceSide.WorkSpaceSide.7725621-0": "Failed to obtain work!",
+    "WorkSpaceSide.WorkSpaceSide.7725621-1": "{0} created successfully",
+    "WorkSpaceSide.WorkSpaceSide.7725621-2": "You can create a project under this work!",
+    "WorkSpaceSide.WorkSpaceSide.7725621-3": "Work Settings",
+    "WorkSpaceSide.WorkSpaceSide.7725621-4": "Please enter a name",
+    "WorkSpaceSide.WorkSpaceSide.7725621-5": "determine",
+    "WorkSpaceSide.WorkSpaceSide.7725621-6": "Create workspace"
+  }
+}

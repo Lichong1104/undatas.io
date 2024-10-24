@@ -1,0 +1,32 @@
+{
+  "zh": {
+    "UploadData.UploadData.903409-0": "上传文件",
+    "UploadData.UploadData.903409-1": "正在上传{0}个文件，请勿刷新页面，并留意任务栏列表查看上传进度",
+    "UploadData.UploadData.903409-2": "第一步：上传文件",
+    "UploadData.UploadData.903409-3": "选择您需要上传的文件或者文件夹进行上传！",
+    "UploadData.UploadData.903409-4": "第二步：上传完成",
+    "UploadData.UploadData.903409-5": "点击左侧导航栏中的 “数据集合” 查看您上传的文件！",
+    "UploadData.UploadData.903409-6": "文件上传",
+    "UploadData.UploadData.903409-7": "请点击下方按钮上传文件",
+    "UploadData.UploadData.903409-8": "可以同时选中多个文件上传",
+    "UploadData.UploadData.903409-9": "选择文件",
+    "UploadData.UploadData.903409-10": "选择文件夹",
+    "UploadData.UploadData.903409-11": "上传文件的格式",
+    "UploadData.UploadData.903409-12": "上传的文件请在右下方按钮查看进度！"
+  },
+  "en": {
+    "UploadData.UploadData.903409-0": "Upload files",
+    "UploadData.UploadData.903409-1": "Uploading {0} files, please do not refresh the page and pay attention to the taskbar list to check the upload progress",
+    "UploadData.UploadData.903409-2": "Step 1: Upload the file",
+    "UploadData.UploadData.903409-3": "Select the file or folder you need to upload and upload it!",
+    "UploadData.UploadData.903409-4": "Step 2: Upload completed",
+    "UploadData.UploadData.903409-5": "Click on \"Data Collection\" in the left navigation bar to view the files you uploaded!",
+    "UploadData.UploadData.903409-6": "File upload",
+    "UploadData.UploadData.903409-7": "Please click the button below to upload files. ",
+    "UploadData.UploadData.903409-8": "Multiple files can be selected and uploaded simultaneously",
+    "UploadData.UploadData.903409-9": "Select file",
+    "UploadData.UploadData.903409-10": "Select folder",
+    "UploadData.UploadData.903409-11": "Format of uploaded files",
+    "UploadData.UploadData.903409-12": "Please check the progress of the uploaded file by clicking the button at the bottom right corner!"
+  }
+}

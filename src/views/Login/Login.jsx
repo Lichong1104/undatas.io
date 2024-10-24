@@ -1,0 +1,229 @@
+import React, { useRef, useState } from "react";
+import { setToken } from "@/utils/handleToken";
+import { useHistory } from "react-router-dom";
+import styled from "styled-components";
+import loginImg from "@/image/login.png";
+import { App, Button, Divider, Input, Space } from "antd";
+import { loginApi, sendEmailCodeApi } from "@/api/httpApi";
+import logoIcon from "@/image/logo.png";
+import logo from "@/image/undatas-logo.png";
+import LocaleButton from "@/components/LocaleButton/LocaleButton";
+import { useDispatch } from "react-redux";
+import MyGoogleLogin from "@/components/MyGoogleLogin/MyGoogleLogin";
+
+function Login() {
+  const history = useHistory();
+  const { message, notification } = App.useApp();
+  const dispatch = useDispatch();
+
+  // 邮箱登录
+  const emailRef = useRef(null);
+  const verificationCode = useRef(null);
+  const [isSendCode, setIsSendCode] = useState(false);
+  const [codeLoading, setCodeLoading] = useState(false);
+
+  const [loginLoading, setLoginLoading] = useState(false);
+
+  // 发送邮箱验证码
+  const sendEmailCode = async () => {
+    setCodeLoading(true);
+    const res = await sendEmailCodeApi(emailRef.current.input.value).finally(() => setCodeLoading(false));
+    if (res.code !== 200) return message.error(res.msg);
+    setIsSendCode(true);
+    message.success(t('Login.Login.554723-0'));
+  };
+
+  // 登录
+  const login = async () => {
+    const emailValue = emailRef.current.input.value;
+    const verificationCodeValue = verificationCode.current.input.value;
+    if (!emailValue || !verificationCodeValue) return message.warning(t('Login.Login.554723-1'));
+
+    setLoginLoading(true);
+    const res = await loginApi(emailValue, verificationCodeValue, "");
+    setLoginLoading(false);
+    if (res.code !== 200) return message.error(res.msg);
+
+    setToken(res.data[0].user_id);
+    localStorage.setItem("username", emailValue);
+    localStorage.setItem("userAvatar", res.data[0].user_avatar);
+    dispatch({
+      type: "SET_USER_AVATAR",
+      payload: res.data[0].user_avatar,
+    });
+
+    notification.success({
+      message: t("Login.Login.9034114-1"),
+      description: t("Login.Login.9034114-2"),
+    });
+    history.push("/");
+  };
+
+  return (
+    <MainBox>
+      <BackGround>
+        {/* <p>@ undatas.io</p> */}
+        <div>
+          <img src={logo} alt="" />
+        </div>
+        <div>
+          <h1>UNDATAS.IO</h1>
+          <p>{t("Login.Login.9034114-3")}</p>
+        </div>
+        <p>© 2024 MIND-COMPUTE AI</p>
+      </BackGround>
+      <Action>
+        <LoginBox>
+          <h1>
+            <img src={logoIcon} alt="" />
+            {t("Login.Login.9034114-4")}
+          </h1>
+          {/* <h2>
+            {t("Login.Login.9034114-5")} <a href="/#">{t("Login.Login.9034114-6")}</a>
+          </h2> */}
+          <h2>{t('Login.Login.554723-2')}</h2>
+          <MyGoogleLogin onLoading={(v) => setLoginLoading(v)} />
+          <Divider plain style={{ margin: 4 }}>
+            OR
+          </Divider>
+          <Space direction="vertical" size={12} style={{ width: "100%" }}>
+            <Input placeholder={t('Login.Login.554723-3')} size="large" ref={emailRef} />
+            <CodeCom>
+              <Input placeholder={t('Login.Login.554723-4')} size="large" ref={verificationCode} />
+              <Button
+                size="large"
+                type="primary"
+                disabled={isSendCode}
+                onClick={sendEmailCode}
+                loading={codeLoading}
+                style={{ margin: 0, height: 50, width: "60%" }}
+              >
+                {!isSendCode ? t('Login.Login.554723-5') : t('Login.Login.554723-6')}
+              </Button>
+            </CodeCom>
+            <Button
+              size="large"
+              type="primary"
+              style={{ height: "50px", fontSize: "20px" }}
+              onClick={login}
+              loading={loginLoading}
+            >
+              {t("Login.Login.9034114-10")}
+            </Button>
+          </Space>
+          <span>
+            {t('Login.Login.554723-7')}{" "}
+            <a href="https://privacy-policy.undatas.io" target="_blank">
+              {t('Login.Login.554723-8')}
+            </a>
+            {t('Login.Login.554723-9')}
+          </span>
+        </LoginBox>
+      </Action>
+      <LocaleButton />
+    </MainBox>
+  );
+}
+
+const MainBox = styled.div`
+  height: 100vh;
+  display: flex;
+  flex-wrap: nowrap;
+  position: relative;
+  overflow: hidden;
+  > div {
+    overflow: hidden;
+    height: 100%;
+  }
+`;
+
+const BackGround = styled.div`
+  width: 60%;
+  background-image: linear-gradient(180deg, #4334e1, rgba(46, 53, 71, 0.35)), url(${loginImg});
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 40px 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  img {
+    height: 48px;
+  }
+  > p {
+    color: #f5f5f5ba;
+    font-size: 14px;
+  }
+  > div {
+    color: white;
+    h1 {
+      font-size: 96px;
+      margin-top: -300px;
+      font-style: italic;
+    }
+
+    p {
+      margin-top: 16px;
+      font-size: 20px;
+      letter-spacing: 2px;
+      margin-left: 8px;
+      font-style: italic;
+    }
+  }
+`;
+
+const Action = styled.div`
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const LoginBox = styled.div`
+  max-width: 560px;
+  width: 90%;
+  height: 100%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  font-style: italic;
+  h1 {
+    font-size: 60px;
+    letter-spacing: 4px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    img {
+      width: 60px;
+      height: 60px;
+    }
+  }
+  h2 {
+    font-size: 16px;
+    font-weight: 300;
+  }
+  input {
+    height: 50px;
+    width: 100%;
+  }
+  button {
+    width: 100%;
+    margin-top: 20px;
+  }
+  > span {
+    font-size: 12px;
+    color: #808080c3;
+  }
+`;
+
+const CodeCom = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 12px;
+`;
+
+export default Login;

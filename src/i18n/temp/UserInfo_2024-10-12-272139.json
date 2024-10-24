@@ -1,0 +1,16 @@
+{
+	"zh": {
+		"UserSettings.UserSettings.7183016-0": "基本设置",
+		"UserSettings.UserSettings.7183016-1": "安全设置",
+		"UserSettings.UserSettings.7183016-2": "账号绑定",
+		"UserSettings.UserSettings.7183016-3": "获取用户信息失败:",
+		"UserSettings.UserSettings.7183016-4": "获取用户信息失败"
+	},
+	"en": {
+		"UserSettings.UserSettings.7183016-0": "Basic Settings",
+		"UserSettings.UserSettings.7183016-1": "security setting",
+		"UserSettings.UserSettings.7183016-2": "Account binding",
+		"UserSettings.UserSettings.7183016-3": "Failed to obtain user information:",
+		"UserSettings.UserSettings.7183016-4": "Failed to obtain user information"
+	}
+}

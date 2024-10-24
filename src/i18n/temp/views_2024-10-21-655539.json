@@ -1,0 +1,26 @@
+{
+  "zh": {
+    "Login.Login.554723-0": "验证码已发送",
+    "Login.Login.554723-1": "请输入邮箱和验证码",
+    "Login.Login.554723-2": "使用谷歌一键登录或者使用邮箱登录！",
+    "Login.Login.554723-3": "请输入邮箱",
+    "Login.Login.554723-4": "请输入验证码",
+    "Login.Login.554723-5": "获取验证码",
+    "Login.Login.554723-6": "已发送",
+    "Login.Login.554723-7": "我们将向您的电子邮箱发送一个独特的验证码，以确保您的安全登录。请您查阅我们的",
+    "Login.Login.554723-8": "隐私保护政策",
+    "Login.Login.554723-9": "，了解我们如何保护您的个人信息。"
+  },
+  "en": {
+    "Login.Login.554723-0": "Verification code has been sent",
+    "Login.Login.554723-1": "Please enter your email and verification code",
+    "Login.Login.554723-2": "Use Google one click login or email login!",
+    "Login.Login.554723-3": "Please enter your email address",
+    "Login.Login.554723-4": "Please enter the verification code",
+    "Login.Login.554723-5": "Obtain verification code",
+    "Login.Login.554723-6": "has been sent",
+    "Login.Login.554723-7": "We will send a unique verification code to your email to ensure your secure login. Please refer to our",
+    "Login.Login.554723-8": "Privacy Protection Policy",
+    "Login.Login.554723-9": "Learn how we protect your Personal Information."
+  }
+}

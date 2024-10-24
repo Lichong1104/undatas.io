@@ -1,0 +1,38 @@
+{
+  "zh": {
+    "VersionInfo.VersionInfo.903403-0": "在版本下可以查看解析数据集的各种参数",
+    "VersionInfo.VersionInfo.903403-1": "每次解析任务都会以一个版本形式保存，",
+    "VersionInfo.VersionInfo.903403-2": "用户可以对每次批量解析的结果，按照期望的方式进行下载，或者通过我们API获取该步骤的解析结果数据，获取解析结果的API可以在本页末端自动生成。",
+    "VersionInfo.VersionInfo.903403-3": "个数据集",
+    "VersionInfo.VersionInfo.903403-4": "查看所有数据集",
+    "VersionInfo.VersionInfo.903403-5": "版本参数",
+    "VersionInfo.VersionInfo.903403-6": "自动定向:",
+    "VersionInfo.VersionInfo.903403-7": "调整:",
+    "VersionInfo.VersionInfo.903403-8": "旋转:",
+    "VersionInfo.VersionInfo.903403-9": "每个训练示例的输出:",
+    "VersionInfo.VersionInfo.903403-10": "创建时间 :",
+    "VersionInfo.VersionInfo.903403-11": "版本:",
+    "VersionInfo.VersionInfo.903403-12": "项目参数",
+    "VersionInfo.VersionInfo.903403-13": "项目名称：",
+    "VersionInfo.VersionInfo.903403-14": "创建时间：",
+    "VersionInfo.VersionInfo.903403-15": "项目类型："
+  },
+  "en": {
+    "VersionInfo.VersionInfo.903403-0": "In the version, various parameters of the parsed dataset can be viewed",
+    "VersionInfo.VersionInfo.903403-1": "Each parsing task will be saved in a version format. ",
+    "VersionInfo.VersionInfo.903403-2": "Users can download the results of each batch parsing in the desired way, or obtain the parsing result data of this step through our API. The API for obtaining parsing results can be automatically generated at the end of this page.",
+    "VersionInfo.VersionInfo.903403-3": "A dataset",
+    "VersionInfo.VersionInfo.903403-4": "View all datasets",
+    "VersionInfo.VersionInfo.903403-5": "Version parameters",
+    "VersionInfo.VersionInfo.903403-6": "Automatic orientation:",
+    "VersionInfo.VersionInfo.903403-7": "Adjustment:",
+    "VersionInfo.VersionInfo.903403-8": "Rotation:",
+    "VersionInfo.VersionInfo.903403-9": "Output of each training example:",
+    "VersionInfo.VersionInfo.903403-10": "Creation time:",
+    "VersionInfo.VersionInfo.903403-11": "edition:",
+    "VersionInfo.VersionInfo.903403-12": "Project parameters",
+    "VersionInfo.VersionInfo.903403-13": "Project Name:",
+    "VersionInfo.VersionInfo.903403-14": "Creation time:",
+    "VersionInfo.VersionInfo.903403-15": "Project type:"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "zh": {
+    "Usage.Usage.903408-0": "加载中...",
+    "Usage.Usage.903408-1": "设置",
+    "Usage.Usage.903408-2": "解析使用情况",
+    "Usage.Usage.903408-3": "以下记录是您最近使用解析项目的记录，包含文本解析、视频理解、视频切割等。",
+    "Usage.Usage.903408-4": "Source Images 源图片",
+    "Usage.Usage.903408-5": "工作区使用情况",
+    "Usage.Usage.903408-6": "以下记录是您最近创建工作区和项目的记录。",
+    "Usage.Usage.903408-7": "感谢您对我们平台的信任与使用，愿我们的工具继续助您高效完成各类解析任务，助力您的项目更上一层楼！"
+  },
+  "en": {
+    "Usage.Usage.903408-0": "Loading",
+    "Usage.Usage.903408-1": "set up",
+    "Usage.Usage.903408-2": "Analyze Usage",
+    "Usage.Usage.903408-3": "The following records are your recent usage of parsing projects, including Text Parsing, video understanding, video segmentation, etc.",
+    "Usage.Usage.903408-4": "Source Images",
+    "Usage.Usage.903408-5": "Usage of workspace",
+    "Usage.Usage.903408-6": "The following records are your recent creations of workspaces and projects.",
+    "Usage.Usage.903408-7": "Thank you for your trust and use of our platform. We hope our tools will continue to help you efficiently complete various parsing tasks and help your project take it to the next level!"
+  }
+}

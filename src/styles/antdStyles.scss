@@ -1,0 +1,38 @@
+// antd-App
+.ant-app {
+  height: 100%;
+}
+
+// antd-Spin样式
+.ant-spin-nested-loading {
+  height: 100% !important;
+  .ant-spin-container {
+    height: 100% !important;
+  }
+}
+
+// // antd-Tabs样式
+// .ant-tabs {
+//   height: 100% !important;
+//   .ant-tabs-nav-wrap {
+//     // tabs header
+//     .ant-tabs-tab {
+//       // 标签栏样式
+//     }
+//   }
+//   // tabs内容
+//   .ant-tabs-content {
+//     height: 100% !important;
+//   }
+//   .ant-tabs-tabpane {
+//     height: 100% !important;
+//   }
+// }
+
+// dropdown 样式
+.antd_dropdown {
+  width: 128px;
+  max-height: 250px;
+  border: 1px solid rgba(128, 128, 128, 0.249);
+  border-radius: 12px;
+}

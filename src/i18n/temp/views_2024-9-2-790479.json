@@ -1,0 +1,32 @@
+{
+  "zh": {
+    "Registered.Registered.903390-0": "请输入用户名或密码！",
+    "Registered.Registered.903390-1": "注册成功",
+    "Registered.Registered.903390-2": "请输入用户名和密码登录！",
+    "Registered.Registered.903390-3": "欢迎注册",
+    "Registered.Registered.903390-4": "已经有账号?",
+    "Registered.Registered.903390-5": "点击此处跳转到登录页面",
+    "Registered.Registered.903390-6": "不到一分钟的时间即可免费注册一个全新账号！",
+    "Registered.Registered.903390-7": "输入用户名和密码开始注册",
+    "Registered.Registered.903390-8": "账户",
+    "Registered.Registered.903390-9": "密码",
+    "Registered.Registered.903390-10": "注册",
+    "Registered.Registered.903390-11": "忘记密码？",
+    "Registered.Registered.903390-12": "点这里"
+  },
+  "en": {
+    "Registered.Registered.903390-0": "Please enter your username or password!",
+    "Registered.Registered.903390-1": "registered successfully",
+    "Registered.Registered.903390-2": "Please enter your username and password to Login!",
+    "Registered.Registered.903390-3": "Register",
+    "Registered.Registered.903390-4": "Do you already have an account?",
+    "Registered.Registered.903390-5": "Click here to jump to the login page",
+    "Registered.Registered.903390-6": "Register a brand new account for free in less than a minute!",
+    "Registered.Registered.903390-7": "Enter username and password to start registration",
+    "Registered.Registered.903390-8": "account",
+    "Registered.Registered.903390-9": "password",
+    "Registered.Registered.903390-10": "register",
+    "Registered.Registered.903390-11": "Forgot password?",
+    "Registered.Registered.903390-12": "Click here"
+  }
+}

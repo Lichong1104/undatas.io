@@ -1,0 +1,32 @@
+{
+  "zh": {
+    "Login.Login.9034114-0": "请输入用户名或密码！",
+    "Login.Login.9034114-1": "登陆成功",
+    "Login.Login.9034114-2": "欢迎来到 UnDatas.IO！",
+    "Login.Login.9034114-3": "非结构化数据解析流水线，生成式AI时代的最佳伴侣!",
+    "Login.Login.9034114-4": "欢迎登录",
+    "Login.Login.9034114-5": "现在没有账号?",
+    "Login.Login.9034114-6": "点击此处创建一个新账号",
+    "Login.Login.9034114-7": "不到一分钟的时间即可免费注册一个全新账号！",
+    "Login.Login.9034114-8": "账户",
+    "Login.Login.9034114-9": "密码",
+    "Login.Login.9034114-10": "登录",
+    "Login.Login.9034114-11": "忘记密码？",
+    "Login.Login.9034114-12": "点击这里"
+  },
+  "en": {
+    "Login.Login.9034114-0": "Please enter your username or password!",
+    "Login.Login.9034114-1": "Login successful",
+    "Login.Login.9034114-2": "Welcome to UnDatasIO！",
+    "Login.Login.9034114-3": "Unstructured data parsing pipeline, the best companion in the era of generative AI!",
+    "Login.Login.9034114-4": "Login",
+    "Login.Login.9034114-5": "Don't have an account now?",
+    "Login.Login.9034114-6": "Click here to create a new account",
+    "Login.Login.9034114-7": "Register a brand new account for free in less than a minute!",
+    "Login.Login.9034114-8": "account",
+    "Login.Login.9034114-9": "password",
+    "Login.Login.9034114-10": "Sign in",
+    "Login.Login.9034114-11": "Forgot password?",
+    "Login.Login.9034114-12": "click here "
+  }
+}

@@ -1,0 +1,28 @@
+{
+	"zh": {
+		"Registered.Registered.718304-0": "请您输入完整的信息",
+		"Registered.Registered.718304-1": "请输入手机号",
+		"Registered.Registered.718304-2": "请输入邮箱",
+		"Registered.Registered.718304-3": "请输入手机号！",
+		"Registered.Registered.718304-4": "验证码已发送至您的手机，请注意查收！",
+		"Registered.Registered.718304-5": "请输入邮箱！",
+		"Registered.Registered.718304-6": "验证码已发送至您的邮箱，请注意查收！",
+		"Registered.Registered.718304-7": "邮箱注册",
+		"Registered.Registered.718304-8": "请输入用户名",
+		"Registered.Registered.718304-9": "发送邮箱验证",
+		"Registered.Registered.718304-10": "已发送"
+	},
+	"en": {
+		"Registered.Registered.718304-0": "Please enter complete information",
+		"Registered.Registered.718304-1": "Please enter your phone number",
+		"Registered.Registered.718304-2": "Please enter your email address",
+		"Registered.Registered.718304-3": "Please enter your phone number!",
+		"Registered.Registered.718304-4": "The verification code has been sent to your mobile phone, please check it carefully!",
+		"Registered.Registered.718304-5": "Please enter your email!",
+		"Registered.Registered.718304-6": "The verification code has been sent to your email, please check it carefully!",
+		"Registered.Registered.718304-7": "Email Registration",
+		"Registered.Registered.718304-8": "enter one user name",
+		"Registered.Registered.718304-9": "Send email verification",
+		"Registered.Registered.718304-10": "has been sent"
+	}
+}
