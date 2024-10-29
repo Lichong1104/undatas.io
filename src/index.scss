@@ -16,3 +16,15 @@ body {
 .vditor-reset--error {
   display: none !important;
 }
+
+// 升级
+.upgradeDrawer {
+  .ant-drawer-header {
+    padding: 0 100px;
+    border-bottom: none;
+    margin: 20px 0;
+  }
+  .ant-drawer-body {
+    padding: 0;
+  }
+}

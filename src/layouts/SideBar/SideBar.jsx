@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import { useHistory, useLocation } from "react-router-dom";
-import { Menu, Layout, ConfigProvider, Tooltip } from "antd";
+import { Menu, Layout, ConfigProvider, Tooltip, Button, Drawer, Radio } from "antd";
 import { workSideBarList, projectSideBarList } from "./sideBarData";
 import { extractValueFromPath } from "../../utils/tools";
 import { useSelector, useDispatch } from "react-redux";
 import WorkSpaceSide from "./WorkSpaceSide/WorkSpaceSide";
 import ProjectSide from "./ProjectSide/ProjectSide";
+import SideBarBody from "../SideBarBody/SideBarBody";
 
 const { Sider } = Layout;
 
@@ -24,9 +24,7 @@ function SideBar() {
     "/user-info/api-keys",
   ];
 
-  const sideBarList = workSideWhite.includes(location.pathname)
-    ? workSideBarList
-    : projectSideBarList;
+  const sideBarList = workSideWhite.includes(location.pathname) ? workSideBarList : projectSideBarList;
 
   //要{t('SideBar.SideBar.7725620-0')}的侧边栏
   const rootSubmenuKeys = sideBarList.filter((v) => v.children).map((v) => v.key);
@@ -67,9 +65,7 @@ function SideBar() {
       collapsed={collapsed}
       breakpoint="xl"
       collapsedWidth="50px"
-      onBreakpoint={(broken) =>
-        dispatch({ type: broken ? "COLLAPSED/TRUE" : "COLLAPSED/FALSE" })
-      }
+      onBreakpoint={(broken) => dispatch({ type: broken ? "COLLAPSED/TRUE" : "COLLAPSED/FALSE" })}
     >
       {collapsed ? (
         ""
@@ -93,20 +89,7 @@ function SideBar() {
           }}
         />
       </ConfigProvider>
-      <div
-        className="collapsed"
-        onClick={() => dispatch({ type: collapsed ? "COLLAPSED/FALSE" : "COLLAPSED/TRUE" })}
-      >
-        {collapsed ? (
-          <Tooltip title={t(t("SideBar.SideBar.7725620-0"))}>
-            <MenuUnfoldOutlined />
-          </Tooltip>
-        ) : (
-          <Tooltip title={t(t("SideBar.SideBar.7725620-1"))}>
-            <MenuFoldOutlined />
-          </Tooltip>
-        )}
-      </div>
+      <SideBarBody collapsed={collapsed} />
     </Sider>
   );
 }

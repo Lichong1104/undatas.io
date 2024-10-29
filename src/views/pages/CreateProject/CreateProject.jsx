@@ -30,7 +30,7 @@ function CreateProject() {
   const onFinish = async (values) => {
     // 不创建video
     if (currentType === "videoNotion" || currentType === "videoCut") {
-      return message.warning(t('CreateProject.CreateProject.783725-0'));
+      return message.warning(t("CreateProject.CreateProject.783725-0"));
     }
 
     setLoading(true);
@@ -145,10 +145,7 @@ function CreateProject() {
             <Form.Item
               label={<ItemTitle>{t("CreateProject.CreateProject.9034112-15")}</ItemTitle>}
               name="task_info"
-              tooltip={{
-                title: "Tooltip with customize icon",
-                icon: <InfoCircleOutlined />,
-              }}
+              tooltip={t("CreateProject.CreateProject.9034112-13")}
             >
               <Input placeholder="input placeholder" />
             </Form.Item>
@@ -158,7 +155,7 @@ function CreateProject() {
           <CardList>
             {typeList.map((v, i) => {
               return (
-                <Tooltip key={i} title={v.disabled ? t('CreateProject.CreateProject.783725-1') : ""}>
+                <Tooltip key={i} title={v.disabled ? t("CreateProject.CreateProject.783725-1") : ""}>
                   <Card onClick={() => typeChange(v)} $isActive={v.type === currentType} $isDisabled={v.disabled}>
                     <div>
                       <img src={v.img} alt="" />
@@ -226,7 +223,7 @@ const Body = styled.div`
 const Title = styled.h1`
   font-size: 32px;
   font-weight: 600;
-  letter-spacing: 4px;
+  letter-spacing: 2px;
 `;
 
 const Placeholder = styled.div`
@@ -243,7 +240,7 @@ const Placeholder = styled.div`
 const ItemTitle = styled.div`
   font-size: 16px;
   font-weight: 600;
-  letter-spacing: 2px;
+  letter-spacing: 0px;
 `;
 
 const InputBox = styled.div`
