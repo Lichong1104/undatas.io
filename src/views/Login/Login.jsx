@@ -3,13 +3,14 @@ import { setToken } from "@/utils/handleToken";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import loginImg from "@/image/login.png";
-import { App, Button, Divider, Input, Space } from "antd";
+import { App, Button, Carousel, Divider, Input, Space } from "antd";
 import { loginApi, sendEmailCodeApi } from "@/api/httpApi";
 import logoIcon from "@/image/logo.png";
 import logo from "@/image/undatas-logo.png";
 import LocaleButton from "@/components/LocaleButton/LocaleButton";
 import { useDispatch } from "react-redux";
 import MyGoogleLogin from "@/components/MyGoogleLogin/MyGoogleLogin";
+import TestimonialCard from "../../components/TestimonialCard/TestimonialCard";
 
 function Login() {
   const history = useHistory();
@@ -59,10 +60,34 @@ function Login() {
     history.push("/");
   };
 
+  // testimonial
+  const testimonialData = [
+    {
+      title: "George Yuan",
+      role: "Director at Deloitte China",
+      avatar: "https://fquantplus.oss-cn-qingdao.aliyuncs.com/undataParser/testimonial_avatar/1.png",
+      content:
+        "UndatasIO has not only saved me countless hours, but it has also given me the confidence to make more accurate and data-driven decisions. I highly recommend this platform to anyone in the financial sector looking to gain a competitive edge in today's data-driven world.",
+    },
+    {
+      title: "Jacky Tang",
+      role: "Zurich Insurance China - Chief Risk Officer",
+      avatar: "https://fquantplus.oss-cn-qingdao.aliyuncs.com/undataParser/testimonial_avatar/2.png",
+      content:
+        "UndatasIO efficiently processes vast amounts of data, including unstructured information, which previously took immense time and effort. Now, I can quickly identify emerging risks, analyze market trends, and gain a deeper understanding of potential vulnerabilities within our operations.",
+    },
+    {
+      title: "Dr Jiong Zhou",
+      role: "Executive Director, Risk Methodology at Nomura",
+      avatar: "https://fquantplus.oss-cn-qingdao.aliyuncs.com/undataParser/testimonial_avatar/3.png",
+      content:
+        "UndatasIO effortlessly handles the complexities of unstructured data, saving me countless hours that were previously spent on data wrangling. This allows me to focus on the analysis itself, extracting valuable insights and making more strategic decisions.",
+    },
+  ];
+
   return (
     <MainBox>
       <BackGround>
-        {/* <p>@ undatas.io</p> */}
         <div>
           <img src={logo} alt="" />
         </div>
@@ -70,6 +95,11 @@ function Login() {
           <h1>UNDATAS.IO</h1>
           <p>{t("Login.Login.9034114-3")}</p>
         </div>
+        <Carousel autoplay dots={false}>
+          {testimonialData.map((v) => {
+            return <TestimonialCard title={v.title} role={v.role} avatar={v.avatar} content={v.content} />;
+          })}
+        </Carousel>
         <p>© 2024 UNDATAS.IO</p>
       </BackGround>
       <Action>
@@ -78,9 +108,6 @@ function Login() {
             <img src={logoIcon} alt="" />
             {t("Login.Login.9034114-4")}
           </h1>
-          {/* <h2>
-            {t("Login.Login.9034114-5")} <a href="/#">{t("Login.Login.9034114-6")}</a>
-          </h2> */}
           <h2>{t("Login.Login.554723-2")}</h2>
           <MyGoogleLogin onLoading={(v) => setLoginLoading(v)} />
           <Divider plain style={{ margin: 4 }}>
@@ -157,7 +184,7 @@ const BackGround = styled.div`
     color: white;
     h1 {
       font-size: 96px;
-      margin-top: -300px;
+      /* margin-top: -300px; */
       font-style: italic;
     }
 
