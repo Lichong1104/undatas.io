@@ -20,8 +20,10 @@ const Pricing = ({ billingCycle }) => {
     {
       title: "Free Plan",
       icon: <GlobalOutlined />,
-      description: "Best for personal, open source, and research. Explore public projects on Roboflow Universe.",
+      description:
+        "Perfect for beginners and open-source projects. Ideal for testing and exploring our parsing capabilities.",
       price: "Free",
+      billingCycle: "No credit card needed.",
       buttonText: "Free Plan",
       buttonUrl: "#",
       isCurrentPlan: true,
@@ -30,21 +32,22 @@ const Pricing = ({ billingCycle }) => {
         text: "for the community to use.",
       },
       includedFeatures: [
-        { text: "1,000 credit per week to get started", subText: "maximum" },
-        { text: "Automatically save uploaded files for 30 days The analysis results will be automatically" },
-        { text: "Priority technical support, quick response to your questions" },
-        { text: "API interface access permission, easily integrate DatasIO into your workflow" },
+        { text: "Includes 1000 credits per week to get started", subText: "maximum" },
+        { text: "Save user files for 30 days" },
+        { text: "API interface access permission, easily integrate UnDatasIO into your workflow" },
       ],
       keyFeatures: {
         title: "In Public Plan:",
-        features: ["Advanced ML Labeling Tools", "Model Training", "Legacy GPUs", "Workflow Builder"],
+        features: ["Document parse (PDF, DOCX, PPTX, JPG, PNG)"],
       },
     },
     {
       title: "Basic Plan",
       icon: <StarOutlined />,
-      description: "Best for personal, open source, and research. Explore public projects on Roboflow Universe.",
+      description:
+        "Designed for regular parsing tasks in both internal and external projects. Great for growing businesses.",
       price: billingCycle === "monthly" ? "$99" : "$79",
+      billingCycle: "per month, billed monthly",
       buttonText: "Upgrade to Basic Plan",
       buttonUrl:
         billingCycle === "monthly"
@@ -56,22 +59,25 @@ const Pricing = ({ billingCycle }) => {
         text: "for your own use.",
       },
       includedFeatures: [
-        { text: "A total of 25000 credit per month" },
-        { text: "Upload files and permanently save them" },
-        { text: "Save the parsing results permanently" },
-        { text: "Priority technical support, quick response to your questions" },
-        { text: "API interface access permission, easily integrate DatasIO into your workflow" },
+        { text: "Includes 25000 credits per month to get started" },
+        { text: "Save user files permanently" },
+        { text: "API interface access permission, easily integrate UnDatasIO into your workflow" },
       ],
       keyFeatures: {
         title: "In Basic Plan:",
-        features: ["Access to Outsourced Labeling", "Premium GPUs", "Commercial Model Licensing", "Model Evaluation"],
+        features: [
+          "Document parse (PDF, DOCX, PPTX, JPG, PNG)",
+          "Complex Table parse ",
+          "Video Audio(mp3, mp4, w4a) parse",
+        ],
       },
     },
     {
       title: "Pro Plan",
       icon: <SmileOutlined />,
-      description: "Best for personal, open source, and research. Explore public projects on Roboflow Universe.",
+      description: "Advanced solution for large-scale parsing tasks in both internal and external enterprise projects.",
       price: billingCycle === "monthly" ? "$189" : "$149",
+      billingCycle: "Billed Annually",
       buttonText: "Upgrade to Pro Plan",
       buttonUrl:
         billingCycle === "monthly"
@@ -83,19 +89,16 @@ const Pricing = ({ billingCycle }) => {
         text: "for your own use.",
       },
       includedFeatures: [
-        { text: "A total of 50000 credit per month" },
-        { text: "Upload files and permanently save them" },
-        { text: "Save the parsing results permanently" },
-        { text: "Priority technical support, quick response to your questions" },
-        { text: "API interface access permission, easily integrate DatasIO into your workflow" },
+        { text: "Includes 50000 credits per month to get started" },
+        { text: "Save user files permanently" },
+        { text: "API interface access permission, easily integrate UnDatasIO into your workflow" },
       ],
       keyFeatures: {
         title: "In Pro Plan:",
         features: [
-          "Role Based Access Control (RBAC)",
-          "Project Folders",
-          "Enterprise Workflow Blocks",
-          "Offline Deployments",
+          "Document parse (PDF, DOCX, PPTX, JPG, PNG)",
+          "Complex Table parse ",
+          "Video Audio(mp3, mp4, w4a) parse",
         ],
       },
     },

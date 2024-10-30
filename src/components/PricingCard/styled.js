@@ -45,6 +45,7 @@ export const Price = styled.div`
 export const BillingCycle = styled.div`
   color: #6b7280;
   font-size: 14px;
+  margin-top: 8px;
 `;
 
 export const Button = styled.button`
@@ -81,7 +82,7 @@ export const DatasetType = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
-  margin: 16px 0;
+  margin: 20px 0;
   border-bottom: 1px solid #e5e7eb;
   border-top: 1px solid #e5e7eb;
   padding: 24px 0;

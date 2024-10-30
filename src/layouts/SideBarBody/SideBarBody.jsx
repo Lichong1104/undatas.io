@@ -51,9 +51,9 @@ function SideBarBody({ collapsed }) {
 
   return (
     <>
-      <UpgradeButton onClick={clickUpgrade}>
+      <UpgradeButton>
         <ComingSoon>{t("SideBarBody.SideBarBody.569446-3")}</ComingSoon>
-        <Button type="primary" icon={<ToTopOutlined />}>
+        <Button type="primary" icon={<ToTopOutlined />} onClick={clickUpgrade}>
           {collapsed ? "" : t("SideBarBody.SideBarBody.569446-4")}
         </Button>
       </UpgradeButton>
@@ -91,7 +91,7 @@ function SideBarBody({ collapsed }) {
 const ComingSoon = styled.div`
   width: 100%;
   padding: 10px;
-  background-color: #635bff;
+  background-color: orange;
   color: #fff;
   border-radius: 4px;
   font-size: 16px;
