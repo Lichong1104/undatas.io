@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import { Button, Drawer, Radio, Tooltip } from "antd";
-import { ToTopOutlined, CloseOutlined, MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
+import {
+  ToTopOutlined,
+  CloseOutlined,
+  MenuUnfoldOutlined,
+  MenuFoldOutlined,
+  FileDoneOutlined,
+} from "@ant-design/icons";
 import { useDispatch } from "react-redux";
 import Pricing from "../../views/pages/Pricing/Pricing";
 import styled from "styled-components";
@@ -52,7 +58,14 @@ function SideBarBody({ collapsed }) {
   return (
     <>
       <UpgradeButton>
-        <ComingSoon>{t("SideBarBody.SideBarBody.569446-3")}</ComingSoon>
+        {collapsed ? undefined : <ComingSoon>{t("SideBarBody.SideBarBody.569446-3")}</ComingSoon>}
+        <Button
+          style={{ width: "100%" }}
+          icon={<FileDoneOutlined />}
+          onClick={() => window.open("https://undatasio.gitbook.io/undatasio-docs")}
+        >
+          {collapsed ? "" : t('SideBarBody.SideBarBody.356940-0')}
+        </Button>
         <Button type="primary" icon={<ToTopOutlined />} onClick={clickUpgrade}>
           {collapsed ? "" : t("SideBarBody.SideBarBody.569446-4")}
         </Button>
@@ -75,11 +88,11 @@ function SideBarBody({ collapsed }) {
 
       <div className="collapsed" onClick={() => dispatch({ type: collapsed ? "COLLAPSED/FALSE" : "COLLAPSED/TRUE" })}>
         {collapsed ? (
-          <Tooltip title={t(t("SideBar.SideBar.7725620-0"))}>
+          <Tooltip title={t("SideBar.SideBar.7725620-0")}>
             <MenuUnfoldOutlined />
           </Tooltip>
         ) : (
-          <Tooltip title={t(t("SideBar.SideBar.7725620-1"))}>
+          <Tooltip title={t("SideBar.SideBar.7725620-1")}>
             <MenuFoldOutlined />
           </Tooltip>
         )}
@@ -107,7 +120,7 @@ const UpgradeButton = styled.div`
   align-items: center;
   justify-content: center;
   gap: 10px;
-  button {
+  button:nth-of-type(2) {
     width: 100%;
     height: 100%;
     background-color: #d4c9f8;

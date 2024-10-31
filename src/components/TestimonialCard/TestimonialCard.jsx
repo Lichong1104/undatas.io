@@ -5,7 +5,6 @@ import styled from "styled-components";
 const { Title, Text, Paragraph } = Typography;
 
 const CardWrapper = styled.div`
-  margin: 20px;
   border-radius: 12px;
   background: #ffffff00;
   color: white;
@@ -19,12 +18,15 @@ const TestimonialHeader = styled.div`
 
 const StyledAvatar = styled(Avatar)`
   margin-right: 16px;
+  img {
+    width: 100%;
+    height: 100% !important;
+  }
 `;
 
 const UserInfo = styled.div`
   display: flex;
   flex-direction: column;
-
   .ant-typography {
     margin: 0;
     &.ant-typography-secondary {
@@ -48,7 +50,7 @@ function TestimonialCard({ title, role, avatar, content }) {
   return (
     <CardWrapper>
       <TestimonialHeader>
-        <StyledAvatar size={52} src={avatar} />
+        <StyledAvatar size={54} src={avatar} />
         <UserInfo>
           <Title style={{ color: "white" }} level={4}>
             {title}

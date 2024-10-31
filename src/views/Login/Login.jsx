@@ -95,9 +95,11 @@ function Login() {
           <h1>UNDATAS.IO</h1>
           <p>{t("Login.Login.9034114-3")}</p>
         </div>
-        <Carousel autoplay dots={false}>
+        <Carousel autoplay dots={false} autoplaySpeed={5000}>
           {testimonialData.map((v) => {
-            return <TestimonialCard title={v.title} role={v.role} avatar={v.avatar} content={v.content} />;
+            return (
+              <TestimonialCard key={v.title} title={v.title} role={v.role} avatar={v.avatar} content={v.content} />
+            );
           })}
         </Carousel>
         <p>© 2024 UNDATAS.IO</p>
