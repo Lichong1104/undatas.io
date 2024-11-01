@@ -58,7 +58,7 @@ function SideBar() {
 
   return (
     <Sider
-      className="sideBarBox"
+      className="sideBarBox custom-scroll"
       width="230px"
       theme="light"
       style={{ backgroundColor: "white" }}

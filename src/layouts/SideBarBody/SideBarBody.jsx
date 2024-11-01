@@ -56,7 +56,7 @@ function SideBarBody({ collapsed }) {
   );
 
   return (
-    <>
+    <MainBox>
       <UpgradeButton>
         {collapsed ? undefined : <ComingSoon>{t("SideBarBody.SideBarBody.569446-3")}</ComingSoon>}
         <Button
@@ -64,7 +64,7 @@ function SideBarBody({ collapsed }) {
           icon={<FileDoneOutlined />}
           onClick={() => window.open("https://undatasio.gitbook.io/undatasio-docs")}
         >
-          {collapsed ? "" : t('SideBarBody.SideBarBody.356940-0')}
+          {collapsed ? "" : t("SideBarBody.SideBarBody.356940-0")}
         </Button>
         <Button type="primary" icon={<ToTopOutlined />} onClick={clickUpgrade}>
           {collapsed ? "" : t("SideBarBody.SideBarBody.569446-4")}
@@ -97,9 +97,16 @@ function SideBarBody({ collapsed }) {
           </Tooltip>
         )}
       </div>
-    </>
+    </MainBox>
   );
 }
+
+const MainBox = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+`;
 
 const ComingSoon = styled.div`
   width: 100%;
@@ -112,7 +119,7 @@ const ComingSoon = styled.div`
 
 const UpgradeButton = styled.div`
   width: 100%;
-  position: absolute;
+  /* position: absolute; */
   bottom: 50px;
   padding: 0 4px;
   display: flex;
