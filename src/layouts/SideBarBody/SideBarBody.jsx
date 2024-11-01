@@ -58,7 +58,6 @@ function SideBarBody({ collapsed }) {
   return (
     <MainBox>
       <UpgradeButton>
-        {collapsed ? undefined : <ComingSoon>{t("SideBarBody.SideBarBody.569446-3")}</ComingSoon>}
         <Button
           style={{ width: "100%" }}
           icon={<FileDoneOutlined />}
