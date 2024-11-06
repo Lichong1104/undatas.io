@@ -12,6 +12,7 @@ function BodyContent() {
     "/work-settings",
     "/user-info/usage",
     "/user-info/api-keys",
+    "/pricing",
   ];
 
   return (

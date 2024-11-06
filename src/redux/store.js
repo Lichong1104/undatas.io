@@ -8,6 +8,7 @@ import { currentWork } from "./reducer/currentWork.js";
 import { currentProject } from "./reducer/currentProject.js";
 import { currentFile } from "./reducer/currentFile.js";
 import { userAvatarReducer } from "./reducer/userAvatar.js";
+import { user } from "./reducer/user.js";
 
 // redux持久化
 const persistConfig = {
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
   currentProject,
   currentFile,
   userAvatarReducer,
+  user,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

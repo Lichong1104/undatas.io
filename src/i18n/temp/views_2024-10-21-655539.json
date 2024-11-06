@@ -9,7 +9,12 @@
     "Login.Login.554723-6": "已发送",
     "Login.Login.554723-7": "我们将向您的电子邮箱发送一个独特的验证码，以确保您的安全登录。请您查阅我们的",
     "Login.Login.554723-8": "隐私保护政策",
-    "Login.Login.554723-9": "，了解我们如何保护您的个人信息。"
+    "Login.Login.554723-9": "，了解我们如何保护您的个人信息。",
+    "Login.Login.371948-0": "请阅读并同意隐私政策",
+    "Login.Login.371948-1": "请阅读并同意",
+    "Login.Login.371948-2": "隐私政策",
+    "Login.Login.371948-3": "和",
+    "Login.Login.371948-4": "服务条款"
   },
   "en": {
     "Login.Login.554723-0": "Verification code has been sent",
@@ -21,6 +26,11 @@
     "Login.Login.554723-6": "has been sent",
     "Login.Login.554723-7": "We will send a unique verification code to your email to ensure your secure login. Please refer to our",
     "Login.Login.554723-8": "Privacy Protection Policy",
-    "Login.Login.554723-9": "Learn how we protect your Personal Information."
+    "Login.Login.554723-9": "Learn how we protect your Personal Information.",
+    "Login.Login.371948-0": "Please read and agree to the privacy policy",
+    "Login.Login.371948-1": "Please read and agree",
+    "Login.Login.371948-2": "Privacy Policy",
+    "Login.Login.371948-3": "and",
+    "Login.Login.371948-4": "Service Terms"
   }
 }

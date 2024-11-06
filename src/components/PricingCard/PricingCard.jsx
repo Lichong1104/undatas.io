@@ -22,15 +22,15 @@ const PricingCard = ({
   price,
   billingCycle,
   buttonText,
-  isCurrentPlan,
+  disabled,
   datasetType,
   includedFeatures,
   keyFeatures,
   buttonUrl,
 }) => {
   return (
-    <CardWrapper $isCurrentPlan={isCurrentPlan}>
-      <Header $isCurrentPlan={isCurrentPlan}>
+    <CardWrapper $disabled={disabled}>
+      <Header $disabled={disabled}>
         <span>{icon}</span>
         <Title>{title}</Title>
       </Header>
@@ -41,14 +41,14 @@ const PricingCard = ({
         <Price>{price}</Price>
         {billingCycle && <BillingCycle>{billingCycle}</BillingCycle>}
       </PriceSection>
-      <a href={buttonUrl} onClick={(e) => (isCurrentPlan ? e.preventDefault() : null)} rel="noreferrer">
-        <Button $isCurrentPlan={isCurrentPlan}>{buttonText}</Button>{" "}
+      <a href={buttonUrl} onClick={(e) => (disabled ? e.preventDefault() : null)} rel="noreferrer">
+        <Button $disabled={disabled}>{buttonText}</Button>{" "}
       </a>
 
       <DatasetType>
-        <span>{datasetType.type === "public" ? "🌐" : "🔒"}</span>
+        <span>{datasetType.type === "for one month" ? "🌐" : "🔒"}</span>
         <DatasetTypeText $isPublic={datasetType.type === "public"}>
-          Datasets and models are <span>{datasetType.type}</span> {datasetType.text}
+          The dataset will be stored <span>{datasetType.type}</span> {datasetType.text}
         </DatasetTypeText>
       </DatasetType>
 

@@ -22,6 +22,7 @@ function SideBar() {
     "/user-info/user-settings",
     "/user-info/usage",
     "/user-info/api-keys",
+    "/pricing",
   ];
 
   const sideBarList = workSideWhite.includes(location.pathname) ? workSideBarList : projectSideBarList;

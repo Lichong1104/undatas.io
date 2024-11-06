@@ -160,89 +160,91 @@ function Project() {
   ];
 
   return (
-    <MainBox>
-      <Title>
-        {t("Project.Project.9034110-10")}
-        <Button type="primary" icon={<PlusOutlined />} onClick={() => history.push("/create-project")}>
-          {t("Project.Project.9034110-11")}
-        </Button>
-      </Title>
-      <Content>
-        <ProjectList className="custom-scroll">
-          {!showEmpty ? (
-            projectList.map((v, i) => {
-              return (
-                <Skeleton loading={v.loading} key={i} active style={{ marginBottom: "32px" }}>
-                  <ProjectItem
-                    key={i}
-                    onClick={(e) => {
-                      dispatch({ type: "PROJECT_CHANGE", payload: v });
-                      history.push("/dataset");
-                    }}
-                  >
-                    <img src={v.image_path} alt="" />
-                    <ProjectInfo>
-                      <Tag color="#eaeaefd3" style={{ color: "black" }} bordered={false}>
-                        {v.task_type}
-                      </Tag>
-                      <h2>
-                        <GlobalOutlined style={{ fontSize: 12, color: "#060606bc" }} />
-                        {v.task_name}
-                      </h2>
-                      <p>Edited {v.time}</p>
-                      <p>
-                        {v.license} {v.num} dataset
-                      </p>
-                    </ProjectInfo>
-                    <ProjectMore>
-                      <Dropdown menu={{ items: projectDropDown }} trigger={["click"]}>
-                        <Button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setProjectId(v.task_id);
-                          }}
-                          icon={<MoreOutlined />}
-                          type="text"
-                        />
-                      </Dropdown>
-                    </ProjectMore>
-                  </ProjectItem>
-                </Skeleton>
-              );
-            })
-          ) : (
-            <Empty style={emptyStyle} />
-          )}
-          {}
-        </ProjectList>
-        <Modal
-          title={t("Project.Project.9034110-12")}
-          open={deleteOpen}
-          onOk={deleteHandleOk}
-          confirmLoading={deleteConfirmLoading}
-          onCancel={(e) => {
-            setDeleteOpen(false);
-            e.stopPropagation();
-          }}
-        >
-          <p>{t("Project.Project.9034110-13")}</p>
-        </Modal>
-        <Modal
-          onClick={(e) => e.stopPropagation()}
-          title={t("Project.Project.9034110-5")}
-          open={renameOpen}
-          onOk={renameHandleOk}
-          confirmLoading={renameConfirmLoading}
-          onCancel={(e) => {
-            setRenameOpen(false);
-            e.stopPropagation();
-          }}
-        >
-          <Input ref={renameInput} placeholder={t("Project.Project.9034110-14")} />
-        </Modal>
-        <UploadProgress width="35%" height="100%" position />
-      </Content>
-    </MainBox>
+    <>
+      <MainBox>
+        <Title>
+          {t("Project.Project.9034110-10")}
+          <Button type="primary" icon={<PlusOutlined />} onClick={() => history.push("/create-project")}>
+            {t("Project.Project.9034110-11")}
+          </Button>
+        </Title>
+        <Content>
+          <ProjectList className="custom-scroll">
+            {!showEmpty ? (
+              projectList.map((v, i) => {
+                return (
+                  <Skeleton loading={v.loading} key={i} active style={{ marginBottom: "32px" }}>
+                    <ProjectItem
+                      key={i}
+                      onClick={(e) => {
+                        dispatch({ type: "PROJECT_CHANGE", payload: v });
+                        history.push("/dataset");
+                      }}
+                    >
+                      <img src={v.image_path} alt="" />
+                      <ProjectInfo>
+                        <Tag color="#eaeaefd3" style={{ color: "black" }} bordered={false}>
+                          {v.task_type}
+                        </Tag>
+                        <h2>
+                          <GlobalOutlined style={{ fontSize: 12, color: "#060606bc" }} />
+                          {v.task_name}
+                        </h2>
+                        <p>Edited {v.time}</p>
+                        <p>
+                          {v.license} {v.num} dataset
+                        </p>
+                      </ProjectInfo>
+                      <ProjectMore>
+                        <Dropdown menu={{ items: projectDropDown }} trigger={["click"]}>
+                          <Button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setProjectId(v.task_id);
+                            }}
+                            icon={<MoreOutlined />}
+                            type="text"
+                          />
+                        </Dropdown>
+                      </ProjectMore>
+                    </ProjectItem>
+                  </Skeleton>
+                );
+              })
+            ) : (
+              <Empty style={emptyStyle} />
+            )}
+            {}
+          </ProjectList>
+          <Modal
+            title={t("Project.Project.9034110-12")}
+            open={deleteOpen}
+            onOk={deleteHandleOk}
+            confirmLoading={deleteConfirmLoading}
+            onCancel={(e) => {
+              setDeleteOpen(false);
+              e.stopPropagation();
+            }}
+          >
+            <p>{t("Project.Project.9034110-13")}</p>
+          </Modal>
+          <Modal
+            onClick={(e) => e.stopPropagation()}
+            title={t("Project.Project.9034110-5")}
+            open={renameOpen}
+            onOk={renameHandleOk}
+            confirmLoading={renameConfirmLoading}
+            onCancel={(e) => {
+              setRenameOpen(false);
+              e.stopPropagation();
+            }}
+          >
+            <Input ref={renameInput} placeholder={t("Project.Project.9034110-14")} />
+          </Modal>
+          <UploadProgress width="35%" height="100%" position />
+        </Content>
+      </MainBox>
+    </>
   );
 }
 

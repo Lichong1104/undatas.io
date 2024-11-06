@@ -1,6 +1,12 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import PageLoading from "@/components/PageLoading/PageLoading";
+import { useLocation } from "react-router-dom/cjs/react-router-dom.min.js";
+import { getUserInfo } from "../utils/tools.js";
+import { useSelector } from "react-redux";
+
+// 定价
+const Pricing = lazy(() => import("../views/pages/Pricing/Pricing.jsx"));
 
 // 工作区
 const Project = lazy(() => import("../views/pages/Project/Project.jsx"));
@@ -17,17 +23,33 @@ const Versions = lazy(() => import("../views/pages/Versions/Versions.jsx"));
 
 // 数据中心
 const DataCenter = lazy(() => import("../views/pages/DataCenter/DataCenter.jsx"));
+
 function PageRouter() {
+  const location = useLocation();
+  const balance = useSelector((state) => state.user.userInfo.balance);
+  // 如果余额为0且不在pricing页面，重定向到pricing
+  if (balance <= 0 && location.pathname !== "/pricing") {
+    return (
+      <Redirect
+        to={{
+          pathname: "/pricing",
+          state: { from: location },
+        }}
+      />
+    );
+  }
+
   return (
     <Suspense fallback={<PageLoading height="100%" />}>
       <Switch>
         <Route path="/project" component={Project} />
+        <Route path="/create-project" component={CreateProject} />
+        <Route path="/work-settings" component={WorkSettings} />
         <Route path="/user-info/usage" component={Usage} />
         <Route path="/user-info/api-keys" component={APIKeys} />
         <Route path="/user-info/user-settings" component={UserSettings} />
 
-        <Route path="/create-project" component={CreateProject} />
-        <Route path="/work-settings" component={WorkSettings} />
+        <Route path="/pricing" component={Pricing} />
 
         <Route path="/dataset" component={Dataset} />
         <Route path="/upload-data" component={UploadData} />

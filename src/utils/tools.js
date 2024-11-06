@@ -1,4 +1,5 @@
 import nProgress from "nprogress";
+import { getBalanceApi, getUserInfoApi } from "../api/httpApi";
 nProgress.configure({ minimum: 0.7, easing: "ease", speed: 500 });
 
 /**
@@ -67,10 +68,28 @@ export const isSeenTour = (page) => {
  * @returns
  */
 export const seenTour = (page) => {
-  const data = localStorage.getItem("seenTour")
-    ? JSON.parse(localStorage.getItem("seenTour"))
-    : {};
+  const data = localStorage.getItem("seenTour") ? JSON.parse(localStorage.getItem("seenTour")) : {};
 
   data[page] = true;
   localStorage.setItem("seenTour", JSON.stringify(data));
+};
+
+// 获取用户当前信息
+export const getUserInfo = async (dispatch) => {
+  const [userInfo, balanceInfo] = await Promise.all([getUserInfoApi(), getBalanceApi()]);
+
+  const obj = {
+    userDesc: userInfo.data[0].user_desc,
+    userPay: userInfo.data[0].user_pay,
+    balance: balanceInfo.data,
+  };
+
+  if (dispatch) {
+    dispatch({
+      type: "USER_INFO_CHANGE",
+      payload: obj,
+    });
+  }
+
+  return obj;
 };

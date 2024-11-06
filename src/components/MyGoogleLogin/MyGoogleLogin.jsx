@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { GoogleOAuthProvider, useGoogleLogin } from "@react-oauth/google";
 import styled from "styled-components";
 import { loginApi } from "@/api/httpApi";
@@ -7,10 +7,14 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { setToken } from "@/utils/handleToken";
 import { useDispatch } from "react-redux";
 
-function GoogleLoginButton({ onLoading }) {
+function GoogleLoginButton({ onLoading, isAgreePolicy }) {
   const { message, notification } = App.useApp();
   const history = useHistory();
   const dispatch = useDispatch();
+
+  // 隐私政策勾选状态
+  const [agreePolicy, setAgreePolicy] = useState(false);
+  useEffect(() => setAgreePolicy(isAgreePolicy), [isAgreePolicy]);
 
   // 登陆成功
   const onSuccess = async (response) => {
@@ -21,8 +25,8 @@ function GoogleLoginButton({ onLoading }) {
 
     const res = await loginApi(userInfo.email, "", userInfo.picture);
     onLoading(false);
-
     if (res.code !== 200) return message.error(res.msg);
+
     setToken(res.data[0].user_id);
     localStorage.setItem("username", userInfo.email);
     localStorage.setItem("userAvatar", res.data[0].user_avatar);
@@ -35,6 +39,7 @@ function GoogleLoginButton({ onLoading }) {
       message: t("Login.Login.9034114-1"),
       description: t("Login.Login.9034114-2"),
     });
+
     history.push("/");
   };
 
@@ -51,7 +56,7 @@ function GoogleLoginButton({ onLoading }) {
   });
 
   return (
-    <MainBox onClick={login}>
+    <MainBox onClick={() => (agreePolicy ? login() : message.warning(t('MyGoogleLogin.MyGoogleLogin.402554-0')))}>
       <GoogleIcon>
         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" className="LgbsSe-Bz112c">
           <g>
@@ -80,10 +85,10 @@ function GoogleLoginButton({ onLoading }) {
   );
 }
 
-function MyGoogleLogin({ onLoading }) {
+function MyGoogleLogin({ onLoading, isAgreePolicy }) {
   return (
     <GoogleOAuthProvider clientId="393836037822-4bb04nk8dqrtnrr9dn7f14hi19m3rjto.apps.googleusercontent.com">
-      <GoogleLoginButton onLoading={onLoading} />
+      <GoogleLoginButton onLoading={onLoading} isAgreePolicy={isAgreePolicy} />
     </GoogleOAuthProvider>
   );
 }

@@ -1,9 +1,9 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { setToken } from "@/utils/handleToken";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import loginImg from "@/image/login.png";
-import { App, Button, Carousel, Divider, Input, Space } from "antd";
+import { App, Button, Carousel, Checkbox, Divider, Input, Space } from "antd";
 import { loginApi, sendEmailCodeApi } from "@/api/httpApi";
 import logoIcon from "@/image/logo.png";
 import logo from "@/image/undatas-logo.png";
@@ -25,6 +25,13 @@ function Login() {
 
   const [loginLoading, setLoginLoading] = useState(false);
 
+  // {t('Login.Login.371948-2')}勾选状态
+  const [isAgreePolicy, setIsAgreePolicy] = useState(false);
+
+  useEffect(() => {
+    console.log(isAgreePolicy);
+  }, [isAgreePolicy]);
+
   // 发送邮箱验证码
   const sendEmailCode = async () => {
     setCodeLoading(true);
@@ -36,6 +43,7 @@ function Login() {
 
   // 登录
   const login = async () => {
+    if (!isAgreePolicy) return message.warning(t("Login.Login.371948-0"));
     const emailValue = emailRef.current.input.value;
     const verificationCodeValue = verificationCode.current.input.value;
     if (!emailValue || !verificationCodeValue) return message.warning(t("Login.Login.554723-1"));
@@ -57,6 +65,7 @@ function Login() {
       message: t("Login.Login.9034114-1"),
       description: t("Login.Login.9034114-2"),
     });
+
     history.push("/");
   };
 
@@ -111,7 +120,7 @@ function Login() {
             {t("Login.Login.9034114-4")}
           </h1>
           <h2>{t("Login.Login.554723-2")}</h2>
-          <MyGoogleLogin onLoading={(v) => setLoginLoading(v)} />
+          <MyGoogleLogin onLoading={(v) => setLoginLoading(v)} isAgreePolicy={isAgreePolicy} />
           <Divider plain style={{ margin: 4 }}>
             OR
           </Divider>
@@ -139,6 +148,26 @@ function Login() {
             >
               {t("Login.Login.9034114-10")}
             </Button>
+
+            <CheckboxCom>
+              <Checkbox
+                style={{
+                  fontSize: 14,
+                  transform: "scale(0.9)",
+                  transformOrigin: "right",
+                }}
+                onChange={(e) => setIsAgreePolicy(e.target.checked)}
+              >
+                {t("Login.Login.371948-1")}{" "}
+                <a href="https://privacy-policy.undatas.io" target="_blank">
+                  {t("Login.Login.371948-2")}
+                </a>{" "}
+                {t("Login.Login.371948-3")}{" "}
+                <a href="https://subscription-terms.undatas.io/" target="_blank">
+                  {t("Login.Login.371948-4")}
+                </a>
+              </Checkbox>
+            </CheckboxCom>
           </Space>
           <span>
             {t("Login.Login.554723-7")}{" "}
@@ -253,6 +282,12 @@ const CodeCom = styled.div`
   align-items: center;
   width: 100%;
   gap: 12px;
+`;
+
+const CheckboxCom = styled.div`
+  font-size: 12px;
+  display: flex;
+  justify-content: flex-end;
 `;
 
 export default Login;

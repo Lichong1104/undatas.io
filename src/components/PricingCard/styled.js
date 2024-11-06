@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { themeColor } from "../../theme/color";
 
 export const CardWrapper = styled.div`
-  border: ${(props) => (props.$isCurrentPlan ? "1px solid #e5e7eb" : `1px solid ${themeColor.primary}`)};
+  border: ${(props) => (props.$disabled ? "1px solid #e5e7eb" : `1px solid ${themeColor.primary}`)};
   border-radius: 8px;
   padding: 24px;
   display: flex;
@@ -18,7 +18,7 @@ export const Header = styled.div`
   margin-bottom: 16px;
   span {
     font-size: 20px;
-    color: ${(props) => (!props.$isCurrentPlan ? `${themeColor.primary}` : "#6b7280")};
+    color: ${(props) => (!props.$disabled ? `${themeColor.primary}` : "#6b7280")};
   }
 `;
 
@@ -53,7 +53,7 @@ export const Button = styled.button`
   padding: 12px;
   border-radius: 6px;
   border: none;
-  cursor: ${(props) => (props.$isCurrentPlan ? "not-allowed" : "pointer")};
+  cursor: ${(props) => (props.$disabled ? "not-allowed" : "pointer")};
   font-weight: 600;
   font-size: 14px;
   transition: all 0.3s ease;
@@ -65,7 +65,7 @@ export const Button = styled.button`
     color: inherit;
   }
   ${(props) =>
-    props.$isCurrentPlan
+    props.$disabled
       ? `
     background-color: #f3f4f6;
     color: #374151;

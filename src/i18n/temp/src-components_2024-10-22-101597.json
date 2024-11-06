@@ -1,10 +1,12 @@
 {
   "zh": {
     "MyGoogleLogin.MyGoogleLogin.015430-0": "登录失败",
-    "MyGoogleLogin.MyGoogleLogin.015430-1": "使用 Google账号登录"
+    "MyGoogleLogin.MyGoogleLogin.015430-1": "使用 Google账号登录",
+    "MyGoogleLogin.MyGoogleLogin.402554-0": "请阅读并同意隐私政策"
   },
   "en": {
     "MyGoogleLogin.MyGoogleLogin.015430-0": "Login failed",
-    "MyGoogleLogin.MyGoogleLogin.015430-1": "Log in with Google account"
+    "MyGoogleLogin.MyGoogleLogin.015430-1": "Log in with Google account",
+    "MyGoogleLogin.MyGoogleLogin.402554-0": "Please read and agree to the privacy policy"
   }
 }
