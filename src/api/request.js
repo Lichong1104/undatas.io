@@ -5,8 +5,6 @@ import axios from "axios";
 // export const serverUrl = "http://192.168.8.21:8087";
 export const serverUrl = "https://backend.undatas.io";
 
-// a
-
 const instance = axios.create({
   // baseURL: "/api", // 请求的基础地址
   baseURL: serverUrl,

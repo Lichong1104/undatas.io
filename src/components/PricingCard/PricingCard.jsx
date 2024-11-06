@@ -41,14 +41,14 @@ const PricingCard = ({
         <Price>{price}</Price>
         {billingCycle && <BillingCycle>{billingCycle}</BillingCycle>}
       </PriceSection>
-      <a href={buttonUrl} onClick={(e) => (disabled ? e.preventDefault() : null)} rel="noreferrer">
+      <a href={disabled ? "#" : buttonUrl} onClick={(e) => (disabled ? e.preventDefault() : null)} rel="noreferrer">
         <Button $disabled={disabled}>{buttonText}</Button>{" "}
       </a>
 
       <DatasetType>
         <span>{datasetType.type === "for one month" ? "🌐" : "🔒"}</span>
-        <DatasetTypeText $isPublic={datasetType.type === "public"}>
-          The dataset will be stored <span>{datasetType.type}</span> {datasetType.text}
+        <DatasetTypeText $isPublic={datasetType?.type === "public"}>
+          {datasetType?.text} <span>{datasetType?.type}</span>
         </DatasetTypeText>
       </DatasetType>
 

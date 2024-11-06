@@ -21,35 +21,12 @@ const PricingList = ({ billingCycle }) => {
   const { userPay, userDesc } = useSelector((state) => state.user.userInfo);
   const pricingData = [
     {
-      title: "Pay As You Go",
-      icon: <GlobalOutlined />,
-      description:
-        "Purchased credits expire on next subscription date. Please purchase reasonable credits to avoid waste.",
-      price: "$30",
-      billingCycle: "Pay by credits",
-      buttonText: "Buy Credits",
-      buttonUrl: `https://buy.stripe.com/9AQaGl2bYc4EdCU7sy?client_reference_id=${getToken()}`,
-      disabled: false,
-      datasetType: {
-        type: "for one month",
-        text: "",
-      },
-      // 帮我改成先判断userDesc是否等于0，如果等于0就显示
-      includedFeatures: [
-        { text: "Start with 6000 one-time credits", subText: "maximum" },
-        { text: "Metered Billing" },
-        { text: "Consumption-Based Pricing" },
-      ],
-      keyFeatures: {
-        title: "In Public Plan:",
-        features: ["Tailored for enterprise clients", "Pay Only for What You Use"],
-      },
-    },
-    {
-      title: "Basic Plan",
+      title: userDesc === "0" ? "Basic Plan (Free Trial)" : "Basic Plan",
       icon: <StarOutlined />,
       description:
-        "Designed for regular parsing tasks in both internal and external projects. Great for growing businesses.",
+        userDesc === "0"
+          ? "Please add a credit or debit card. By doing so, you will enjoy seamless access to our features and services."
+          : "Designed for regular parsing tasks in both internal and external projects. Great for growing businesses.",
       price:
         billingCycle === "monthly" ? (
           userDesc === "0" ? (
@@ -63,21 +40,27 @@ const PricingList = ({ billingCycle }) => {
         ) : (
           "$79"
         ),
-      billingCycle: "per month, billed monthly",
-      buttonText: "Upgrade to Basic Plan",
+      billingCycle: billingCycle === "monthly" ? "Billed Monthly" : "Billed Annually",
+      buttonText: userDesc === "0" ? "Start Free Trial" : "Upgrade to Basic Plan",
       buttonUrl:
         billingCycle === "monthly"
           ? userDesc === "0"
-            ? `https://buy.stripe.com/aEU01H03Q6KkcyQfZ6`
+            ? `https://buy.stripe.com/aEU01H03Q6KkcyQfZ6?client_reference_id=${getToken()}`
             : `https://buy.stripe.com/8wM4hXaIud8I9mE4gl?client_reference_id=${getToken()}`
           : `https://buy.stripe.com/9AQ15L17U4CcgP6fZ2?client_reference_id=${getToken()}`,
       disabled: userPay === "basic" ? true : false,
-      datasetType: {
-        type: "indefinitely",
-        text: "",
-      },
+      datasetType:
+        userDesc === "0"
+          ? {
+              type: "",
+              text: "Enjoy 1000 credits for free for trial period",
+            }
+          : {
+              type: "indefinitely",
+              text: "The dataset will be stored",
+            },
       includedFeatures: [
-        { text: "Includes 25000 credits per month to get started" },
+        { text: `Includes ${userDesc === "0" ? "1000" : "25000"} credits per month to get started` },
         { text: "Save user files permanently" },
         { text: "API interface access permission, easily integrate UnDatasIO into your workflow" },
       ],
@@ -95,7 +78,7 @@ const PricingList = ({ billingCycle }) => {
       icon: <SmileOutlined />,
       description: "Advanced solution for large-scale parsing tasks in both internal and external enterprise projects.",
       price: billingCycle === "monthly" ? "$189" : "$149",
-      billingCycle: "Billed Annually",
+      billingCycle: billingCycle === "monthly" ? "Billed Monthly" : "Billed Annually",
       buttonText: "Upgrade to Pro Plan",
       buttonUrl:
         billingCycle === "monthly"
@@ -104,7 +87,7 @@ const PricingList = ({ billingCycle }) => {
       disabled: userPay === "pro" ? true : false,
       datasetType: {
         type: "indefinitely",
-        text: "",
+        text: " The dataset will be stored",
       },
       includedFeatures: [
         { text: "Includes 50000 credits per month to get started" },
@@ -118,6 +101,31 @@ const PricingList = ({ billingCycle }) => {
           "Complex Table parse ",
           "Video Audio(mp3, mp4, w4a) parse",
         ],
+      },
+    },
+    {
+      title: "Pay As You Go",
+      icon: <GlobalOutlined />,
+      description:
+        "Purchased credits expire on next subscription date. Please purchase reasonable credits to avoid waste",
+      price: "$30",
+      billingCycle: "Subscribe first before purchasing Pay As You Go",
+      buttonText: "Buy Credits",
+      buttonUrl: `https://buy.stripe.com/9AQaGl2bYc4EdCU7sy?client_reference_id=${getToken()}`,
+      disabled: userPay !== "free" ? false : true,
+      datasetType: {
+        type: "for one month",
+        text: " The dataset will be stored",
+      },
+      // 帮我改成先判断userDesc是否等于0，如果等于0就显示
+      includedFeatures: [
+        { text: "Start with 6000 one-time credits", subText: "maximum" },
+        { text: "Metered Billing" },
+        { text: "Consumption-Based Pricing" },
+      ],
+      keyFeatures: {
+        title: "In Public Plan:",
+        features: ["Tailored for enterprise clients", "Pay Only for What You Use"],
       },
     },
   ];
