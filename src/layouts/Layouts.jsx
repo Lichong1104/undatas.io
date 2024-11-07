@@ -21,7 +21,7 @@ function Layouts() {
   useEffect(() => {
     (async () => {
       const userInfo = await getUserInfo(dispatch);
-      history.push(userInfo.balance > 0 ? "/" : "/pricing");
+      if (userInfo.balance <= 0) history.push("/pricing");
       setLoading(false);
     })();
   }, []);

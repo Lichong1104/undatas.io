@@ -22,6 +22,7 @@ import {
   renameVersionApi,
 } from "@/api/httpApi";
 import { useSelector } from "react-redux";
+import { downloadDatasetByUrlApi } from "../../../api/httpApi";
 
 const { Search } = Input;
 
@@ -93,23 +94,23 @@ function Versions() {
   // {t('Versions.Versions.903402-16')}
   const download = async () => {
     setDownLoading(true);
-    const res = await downloadDatasetApi(
-      project.task_id,
-      versionList[currentVersion].vision,
-      project.task_type
-    );
-    setDownLoading(false);
+    const res = await downloadDatasetApi(project.task_id, versionList[currentVersion].vision, project.task_type);
     if (res.code !== 200) return message.error(res.msg);
-    window.open(res.data, "_self");
+
+    // 轮询下载状态
+    const interval = setInterval(async () => {
+      const res = await downloadDatasetByUrlApi(project.task_id, versionList[currentVersion].vision);
+      if (res.code === 200) {
+        window.open(res.data, "_self");
+        setDownLoading(false);
+        clearInterval(interval);
+      }
+    }, 5000);
   };
 
   // {t('Versions.Versions.903402-15')}
   const deleteVersion = async () => {
-    const res = await deleteVersionApi(
-      project.task_id,
-      versionList[currentVersion].vision,
-      project.task_type
-    );
+    const res = await deleteVersionApi(project.task_id, versionList[currentVersion].vision, project.task_type);
     if (res.code !== 200) return message.error(res.msg);
     await init();
     message.success(t("Versions.Versions.903402-3"));
@@ -265,11 +266,7 @@ function Versions() {
                       </Button>
                     </Popconfirm>
 
-                    <Button
-                      icon={<DownloadOutlined />}
-                      loading={downLoading}
-                      onClick={download}
-                    >
+                    <Button icon={<DownloadOutlined />} loading={downLoading} onClick={download}>
                       {t("Versions.Versions.903402-16")}
                     </Button>
                     {rename ? (
@@ -284,11 +281,7 @@ function Versions() {
                         loading={renameLoading}
                       />
                     ) : (
-                      <Button
-                        icon={<FormOutlined />}
-                        onClick={() => setRename(true)}
-                        type="primary"
-                      >
+                      <Button icon={<FormOutlined />} onClick={() => setRename(true)} type="primary">
                         {t("Versions.Versions.903402-18")}
                       </Button>
                     )}
@@ -385,14 +378,12 @@ const VersionItem = styled.div`
   gap: 4px;
   transition: 0.2s;
   border-top: 1px solid #8080802b;
-  background-color: ${(props) =>
-    props.$isActive || props.$isMerge ? themeColor.hover : "white"};
+  background-color: ${(props) => (props.$isActive || props.$isMerge ? themeColor.hover : "white")};
   position: relative;
   border: ${(props) => (props.$isMerge ? "2px" : "0px")} solid ${themeColor.primary};
   /* border-top: none; */
   &:hover {
-    background-color: ${(props) =>
-      props.$isActive || props.$isMerge ? themeColor.hover : "#8080801a"};
+    background-color: ${(props) => (props.$isActive || props.$isMerge ? themeColor.hover : "#8080801a")};
   }
   > p {
     font-weight: 500;

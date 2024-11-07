@@ -259,7 +259,7 @@ export const renameVersionApi = (task_type, task_id, vision, title) => {
 };
 
 /**
- * 下载数据集
+ * 通知下载数据集
  * @param {string} task_id
  * @param {string} vision
  * @param {string} task_type
@@ -267,6 +267,16 @@ export const renameVersionApi = (task_type, task_id, vision, title) => {
  */
 export const downloadDatasetApi = (task_id, vision, task_type) => {
   return post("/api/task/download_md_vision", { task_id, vision, task_type });
+};
+
+/**
+ * 获取下载数据集状态
+ * @param {string} task_id
+ * @param {string} vision
+ * @returns
+ */
+export const downloadDatasetByUrlApi = (task_id, vision) => {
+  return get(`/api/task/download_status/${task_id}-${vision}`);
 };
 
 /**
