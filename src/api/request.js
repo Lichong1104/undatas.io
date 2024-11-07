@@ -2,16 +2,14 @@ import { getToken } from "@/utils/handleToken";
 import axios from "axios";
 
 // export const serverUrl = "http://116.204.67.82:8087";
-export const serverUrl = "http://192.168.8.21:8087";
-// export const serverUrl = "https://backend.undatas.io";
+// export const serverUrl = "http://192.168.8.21:8087";
+export const serverUrl = "https://backend.undatas.io";
 
 const instance = axios.create({
   // baseURL: "/api", // 请求的基础地址
   baseURL: serverUrl,
   timeout: 0, // 请求超时时间
 });
-
-// a
 
 // 全局请求拦截，发起网络请求之前执行
 instance.interceptors.request.use(
