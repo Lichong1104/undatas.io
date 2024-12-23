@@ -40,5 +40,5 @@ export const projectSideBarList = [
     label: t("SideBar.sideBarData.7725619-3"),
     icon: <MenuOutlined />,
   },
-  { key: "/api-docs", label: "API Docs", icon: <ReadOutlined /> },
+  // { key: "/api-docs", label: "API Docs", icon: <ReadOutlined /> },
 ];

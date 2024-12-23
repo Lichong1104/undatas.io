@@ -70,7 +70,7 @@ function CreateProject() {
       title: t("CreateProject.CreateProject.9034112-4"),
       img: videoCutImage,
       desc: t("CreateProject.CreateProject.9034112-5"),
-      disabled: false,
+      disabled: true,
     },
     {
       type: "videoNotion",
