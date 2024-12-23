@@ -22,12 +22,12 @@ export default defineConfig({
     port: 8086,
     host: true,
     open: true,
-    proxy: {
-      "/api": {
-        target: "http://119.8.170.199:8000",
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ""),
-      },
-    },
+    // proxy: {
+    //   "/api": {
+    //     target: "http://119.8.170.199:8000",
+    //     changeOrigin: true,
+    //     rewrite: (path) => path.replace(/^\/api/, ""),
+    //   },
+    // },
   },
 });

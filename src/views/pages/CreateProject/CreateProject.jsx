@@ -29,9 +29,9 @@ function CreateProject() {
   // 提交
   const onFinish = async (values) => {
     // 不创建video
-    if (currentType === "videoNotion" || currentType === "videoCut") {
-      return message.warning(t("CreateProject.CreateProject.783725-0"));
-    }
+    // if (currentType === "videoNotion" || currentType === "videoCut") {
+    //   return message.warning(t("CreateProject.CreateProject.783725-0"));
+    // }
 
     setLoading(true);
     const data = { ...values, work_id: workId, task_type: currentType };
@@ -65,6 +65,14 @@ function CreateProject() {
       disabled: false,
     },
     {
+      type: "videoCut",
+      num: 632,
+      title: t("CreateProject.CreateProject.9034112-4"),
+      img: videoCutImage,
+      desc: t("CreateProject.CreateProject.9034112-5"),
+      disabled: false,
+    },
+    {
       type: "videoNotion",
       num: 352,
       title: t("CreateProject.CreateProject.9034112-2"),
@@ -72,14 +80,7 @@ function CreateProject() {
       desc: t("CreateProject.CreateProject.9034112-3"),
       disabled: true,
     },
-    {
-      type: "videoCut",
-      num: 632,
-      title: t("CreateProject.CreateProject.9034112-4"),
-      img: videoCutImage,
-      desc: t("CreateProject.CreateProject.9034112-5"),
-      disabled: true,
-    },
+
     {
       type: "meet",
       num: 104,

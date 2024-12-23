@@ -28,10 +28,6 @@ function Login() {
   // {t('Login.Login.371948-2')}勾选状态
   const [isAgreePolicy, setIsAgreePolicy] = useState(false);
 
-  useEffect(() => {
-    console.log(isAgreePolicy);
-  }, [isAgreePolicy]);
-
   // 发送邮箱验证码
   const sendEmailCode = async () => {
     setCodeLoading(true);

@@ -1,8 +1,7 @@
-import React, { lazy, Suspense, useEffect } from "react";
+import React, { lazy, Suspense } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import PageLoading from "@/components/PageLoading/PageLoading";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min.js";
-import { getUserInfo } from "../utils/tools.js";
 import { useSelector } from "react-redux";
 
 // 定价
@@ -20,6 +19,7 @@ const WorkSettings = lazy(() => import("../views/pages/WorkSettings/WorkSettings
 const Dataset = lazy(() => import("../views/pages/Dataset/Dataset.jsx"));
 const UploadData = lazy(() => import("../views/pages/UploadData/UploadData.jsx"));
 const Versions = lazy(() => import("../views/pages/Versions/Versions.jsx"));
+const APIDocs = lazy(() => import("../views/pages/APIDocs/APIDocs.jsx"));
 
 // 数据中心
 const DataCenter = lazy(() => import("../views/pages/DataCenter/DataCenter.jsx"));
@@ -54,6 +54,7 @@ function PageRouter() {
         <Route path="/dataset" component={Dataset} />
         <Route path="/upload-data" component={UploadData} />
         <Route path="/versions" component={Versions} />
+        <Route path="/api-docs" component={APIDocs} />
 
         <Route path="/data-center" component={DataCenter} />
         <Route path="/" exact render={() => <Redirect to="/project" />} />
