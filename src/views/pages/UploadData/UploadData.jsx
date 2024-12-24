@@ -18,6 +18,17 @@ import { noticeUploadApi } from "@/api/httpApi";
 import { multipartUploadApi } from "@/api/ossApi";
 import { isSeenTour, seenTour } from "@/utils/tools";
 
+// 添加允许的文件类型常量
+const ALLOWED_FILE_TYPES = [
+  "application/pdf",
+  "image/png",
+  "image/jpeg",
+  "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+  "application/vnd.ms-powerpoint",
+  "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  "application/msword",
+];
+
 function UploadData() {
   const project = useSelector((state) => state.currentProject.project);
   const workId = useSelector((state) => state.currentWork.work.work_id);
@@ -31,6 +42,19 @@ function UploadData() {
   // {t('UploadData.UploadData.903409-6')}
   const fileUpload = async (e) => {
     const files = e.target.files;
+
+    // 检查文件类型
+    const invalidFiles = Array.from(files).filter((file) => !ALLOWED_FILE_TYPES.includes(file.type));
+    if (invalidFiles.length > 0) {
+      notification.error({
+        message: "文件类型错误",
+        description: `不支持的文件类型：${invalidFiles
+          .map((f) => f.name)
+          .join(", ")}。仅支持 PDF、PNG、JPG、PPT、PPTX、DOCX、DOC 格式。`,
+      });
+      return;
+    }
+
     const fileArray = Array.from(files).map((f, i) => ({
       name: f.name,
       size: f.size,
@@ -160,7 +184,7 @@ function UploadData() {
                 Document
               </Space>
 
-              <p>in .pdf .pptx .ppt .docx .doc</p>
+              <p>in .pdf .png .jpg .ppt .pptx .docx .doc</p>
             </div>
             {/* <div>
               <Space>
